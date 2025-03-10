@@ -1,0 +1,2 @@
+// This is a business logic class that checks to see if the username, email and password are valid (characters are valid, email has '@', etc.)
+// This calls the persistence layer class with the SQL function to save the data if it is valid

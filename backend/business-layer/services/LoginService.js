@@ -1,0 +1,2 @@
+// This is a business logic class that calls the persistence layer class to check to see if the username and password are valid, and sends a response
+// to the frontend (presentation layer) class in response

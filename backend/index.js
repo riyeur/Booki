@@ -1,0 +1,1 @@
+// Layered architecture must have a main class to instantiate everything. This will act as that class

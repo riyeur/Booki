@@ -1,0 +1,1 @@
+// This class should include the book details that the LLM prompt generates: name, author, description and accessibility
