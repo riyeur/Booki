@@ -1,20 +1,23 @@
 import React from 'react';
+import '../styles/LoginPageStyles.css'
 
 const LoginForm = () => {
     return (
         <div className='login-form'>
-            <h2>Login</h2>
-            <form>
-                <input type='text' placeholder='Enter your username' required></input>
-                <input type='password' placeholder='Enter your password' required></input>
-                <input type='submit' value='Sign in'></input>
-            </form>
-            <hr></hr>
-            <div>
-                <p>Don't have an account?</p>
-                <button>Register</button>
+            <div className='login-title-and-form'>
+                <h2 className='login-title'>Login</h2>
+                <form className='form-section'>
+                    <input type='text' placeholder='Enter your username' required className='username'></input>
+                    <input type='password' placeholder='Enter your password' required className='password'></input>
+                    <input type='submit' value='Sign in' className='sign-in-button'></input>
+                </form>
+            </div>
+            <hr className='boundary'></hr>
+            <div className='second-section'>
+                <p className='dont-have-account'>Don't have an account?</p>
+                <button className='register'>Register</button>
                 <p>or continue as</p>
-                <a href='url'>Guest</a>
+                <a href='url' className='guest'>Guest</a>
             </div>
         </div>
     )

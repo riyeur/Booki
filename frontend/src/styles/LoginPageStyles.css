@@ -1,0 +1,63 @@
+body {
+    min-height: 100vh;
+    background: linear-gradient(#F2A2B5, #FFD7C0);
+    background-repeat: no-repeat;
+}
+
+.booki-logo {
+    margin-bottom: 2rem;
+}
+
+.title {
+    text-align: center;
+}
+
+.components {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    background-color: white;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    border-radius: 1.5rem;
+}
+
+.login-title {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-in-button {
+    background-color: #F2A2B5;
+    border: none;
+    border-radius: 0.5rem;
+    height: 4.1vh;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.username {
+    height: 4.3vh;
+    border-radius: 15px;
+    margin-bottom: 0.7rem;
+}
+
+.password {
+    height: 4.3vh;
+    border-radius: 15px;
+    margin-bottom: 0.9rem;
+}

@@ -1,10 +1,14 @@
 import React from 'react';
 import LoginForm from '../components/LoginForm'
+import '../styles/LoginPageStyles.css'
 
 const LoginPage = () => {
     return (
         <div className='login-page'>
-            <LoginForm></LoginForm>
+            <div className='components'>
+                <img className='booki-logo' src='/booki_logo.png' alt='Booki Logo' height='100' width='auto'/>
+                <LoginForm></LoginForm>
+            </div>
         </div>
     )
 }
