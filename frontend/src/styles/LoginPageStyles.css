@@ -44,6 +44,8 @@ body {
     margin-top: 2rem;
     margin-bottom: 1.5rem;
     color: #3E2622;
+    font-family: 'Karla';
+    src: url('../fonts/Karla-Bold.ttf');
 }
 
 .form-section {
@@ -58,6 +60,10 @@ body {
     height: 4.1vh;
     font-weight: 600;
     margin-bottom: 1rem;
+    cursor: pointer;
+    font-family: 'Karla';
+    src: url('../fonts/Karla-SemiBold.ttf');
+    font-size: medium;
 }
 
 input {
@@ -69,12 +75,18 @@ input {
     height: 5vh;
     margin-bottom: 0.7rem;
     text-indent: 0.7rem;
+    font-family: 'Karla';
+    src: url('../fonts/Karla-Regular.ttf');
+    font-size: medium;
 }
 
 .password {
     height: 5vh;
     margin-bottom: 0.9rem;
     text-indent: 0.7rem;
+    font-family: 'Karla';
+    src: url('../fonts/Karla-Regular.ttf');
+    font-size: medium;
 }
 
 input:focus {
@@ -84,6 +96,10 @@ input:focus {
 .dont-have-account {
     font-size: small;
     text-align: center;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    font-family: 'Karla';
+    src: url('../fonts/Karla-Regular.ttf');
 }
 
 hr {
@@ -103,6 +119,10 @@ hr {
     height: 4.1vh;
     width: 13rem;
     font-weight: 600;
+    cursor: pointer;
+    font-family: 'Karla';
+    src: url('../fonts/Karla-SemiBold.ttf');
+    font-size: medium;
 }
 
 .continue-as-guest {
@@ -110,14 +130,19 @@ hr {
     justify-content: center;
     align-items: center;
     font-size: small;
+    padding-top: 0.1rem;
 }
 
 .continue-as {
     margin-right: 0.3rem;
+    font-family: 'Karla';
+    src: url('../fonts/Karla-Regular.ttf');
 }
 
 .guest {
     text-decoration: none;
     color: #E491A6;
     font-weight: bold;
+    font-family: 'Karla';
+    src: url('../fonts/Karla-Bold.ttf');
 }

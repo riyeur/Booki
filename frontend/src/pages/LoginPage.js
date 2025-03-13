@@ -6,7 +6,7 @@ const LoginPage = () => {
     return (
         <div className='login-page'>
             <div className='components'>
-                <img className='booki-logo' src='/booki_logo.png' alt='Booki Logo' height='100' width='auto'/>
+                <img className='booki-logo' src='/booki_logo.png' alt='Booki Logo' height='105' width='auto'/>
                 <LoginForm></LoginForm>
             </div>
         </div>
