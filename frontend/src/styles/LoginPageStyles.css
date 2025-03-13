@@ -4,6 +4,12 @@ body {
     background-repeat: no-repeat;
 }
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .booki-logo {
     margin-bottom: 2rem;
 }
@@ -21,19 +27,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 4rem;
 }
 
 .login-form {
     background-color: white;
-    padding-left: 3vw;
-    padding-right: 3vw;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
     border-radius: 1.5rem;
+    padding-bottom: 2.3rem;
+    box-shadow: 0.5rem 0.5rem #A3586B;
 }
 
 .login-title {
     text-align: center;
     margin-top: 2rem;
     margin-bottom: 1.5rem;
+    color: #3E2622;
 }
 
 .form-section {
@@ -46,18 +56,68 @@ body {
     border: none;
     border-radius: 0.5rem;
     height: 4.1vh;
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: 1rem;
 }
 
+input {
+    border: 1.5px solid black;
+    border-radius: 20px;
+}
+
 .username {
-    height: 4.3vh;
-    border-radius: 15px;
+    height: 5vh;
     margin-bottom: 0.7rem;
+    text-indent: 0.7rem;
 }
 
 .password {
-    height: 4.3vh;
-    border-radius: 15px;
+    height: 5vh;
     margin-bottom: 0.9rem;
+    text-indent: 0.7rem;
+}
+
+input:focus {
+    background-color: #FFFFFF;
+}
+
+.dont-have-account {
+    font-size: small;
+    text-align: center;
+}
+
+hr {
+    border: none;
+    background-color: #000000;
+    height: 0.05rem;
+}
+
+.second-section {
+    text-align: center;
+}
+
+.register {
+    background-color: #F2A2B5;
+    border: none;
+    border-radius: 0.5rem;
+    height: 4.1vh;
+    width: 13rem;
+    font-weight: 600;
+}
+
+.continue-as-guest {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+}
+
+.continue-as {
+    margin-right: 0.3rem;
+}
+
+.guest {
+    text-decoration: none;
+    color: #E491A6;
+    font-weight: bold;
 }

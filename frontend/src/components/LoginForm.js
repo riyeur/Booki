@@ -16,8 +16,10 @@ const LoginForm = () => {
             <div className='second-section'>
                 <p className='dont-have-account'>Don't have an account?</p>
                 <button className='register'>Register</button>
-                <p>or continue as</p>
-                <a href='url' className='guest'>Guest</a>
+                <div className='continue-as-guest'>
+                    <p className='continue-as'>or continue as </p>
+                    <a href='url' className='guest'>Guest</a>
+                </div>
             </div>
         </div>
     )
