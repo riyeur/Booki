@@ -1,2 +1,0 @@
-// This should get all the sign-up requests (API requests) and then call the LoginService.js in the business layer to validate the request
-// This is technically a part of the presentation layer along with the React code
