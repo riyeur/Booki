@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
+import LLMPromptPage from './pages/LLMPromptPage';
 
 const App = () => {
   return (
       <Router>
           <Routes>
-              {/*<Route path="/" element={<LoginPage />} /> write path like this for page*/}
+              {<Route path="/llm-prompt" element={<LLMPromptPage />} />}
           </Routes>
       </Router>
   );
