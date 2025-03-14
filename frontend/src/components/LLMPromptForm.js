@@ -1,6 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
 import Genre from '../components/llm-prompt-form-components/Genre';
+import AgeGroup from '../components/llm-prompt-form-components/AgeGroup';
+import Length from '../components/llm-prompt-form-components/Length';
 
 const LLMPromptForm = () => {
 
@@ -13,6 +14,8 @@ const LLMPromptForm = () => {
             <div className='llm-prompt-form-inputs'>
                 <form className='form-inputs'>
                     <Genre></Genre>
+                    <AgeGroup></AgeGroup>
+                    <Length></Length>
                 </form>
             </div>
         </div>
