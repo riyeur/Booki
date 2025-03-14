@@ -9,8 +9,9 @@ const Length = () => {
 
     return (
         <div className='length'>
+            <label>Length</label>
             <select className='lengths' name='options'>
-                <option value="" disabled selected>Length</option>
+                <option value='' disabled selected></option>
                 {length.map((length, index) => (
                     <option key={index} value={length.toLowerCase().replace(/\s+/g, '-')}>
                         {length}

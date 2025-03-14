@@ -12,8 +12,9 @@ const Genre = () => {
 
     return (
         <div className='genres'>
+            <label>Genre</label>
             <select className='genre' name='options'>
-                <option value="" disabled selected>Genre</option>
+                <option value='' disabled selected></option>
                 {genres.map((genre, index) => (
                     <option key={index} value={genre.toLowerCase().replace(/\s+/g, '-')}>
                         {genre}

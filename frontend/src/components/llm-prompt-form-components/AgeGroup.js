@@ -9,8 +9,9 @@ const AgeGroup = () => {
 
     return (
         <div className='age-group'>
+            <label>Age Group</label>
             <select className='group' name='options'>
-                <option value="" disabled selected>Age Group</option>
+                <option value='' disabled selected></option>
                 {groups.map((group, index) => (
                     <option key={index} value={group.toLowerCase().replace(/\s+/g, '-')}>
                         {group}
