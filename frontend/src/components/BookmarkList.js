@@ -1,0 +1,1 @@
+// This component represents a list of the user's bookmarks
