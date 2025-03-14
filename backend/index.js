@@ -1,1 +1,7 @@
-// Layered architecture must have a main class to instantiate everything. This will act as that class
+require('dotenv').config();
+
+const config = {
+    port: process.env.PORT || 3000
+};
+
+module.exports = config;
