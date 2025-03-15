@@ -17,7 +17,8 @@ const BookmarkList = () => {
 
     return (
         <div className='bookmark-list'>
-            {
+            <h1>My Bookmarks</h1>
+            {   
                 // looping through all the bookmarks and creating a BookmarkCard component for each
                 boookmarks.map((bookmark) => (
                     // key isn't passed to BookmarkCard, its used internally as a unique identifier for 
