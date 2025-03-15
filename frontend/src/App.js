@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
+import ProfilePage from './pages/ProfilePage';
 
 const App = () => {
   return (
       <Router>
           <Routes>
-              {/*<Route path="/" element={<LoginPage />} /> write path like this for page*/}
+              <Route path="/" element={<ProfilePage/>} /> 
           </Routes>
       </Router>
   );
