@@ -1,4 +1,10 @@
 /* This page contains the styling for the Profile Page */
+@font-face {
+    font-family: 'Karla'; 
+    src: url('../fonts/Karla-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
 
 body {
     min-height: 100vh;
@@ -23,5 +29,22 @@ body {
     margin-top: 2.5rem;
     max-width: 55vw;
     box-shadow: 0.2rem 0.2rem 0.3rem #A3586B;
+}
+
+.bookmark-card p {
+    font-family: 'Karla';
+    src: url('../fonts/Karla-Regular.ttf');
+}
+
+.bookmark-card button {
+    background-color: #F2A2B5;
+    border: none;
+    border-radius: 0.5rem;
+    height: 4.1vh;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    font-family: 'Karla';
+    src: url('../fonts/Karla-Regular.ttf');
+    font-size: medium;
 }
 
