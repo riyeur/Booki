@@ -1,12 +1,37 @@
+import Users from '../../persistence-layer/database-functions/Users.js';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
-export async function authenticateUser(username, password) {
-    // Simulating user authentication (replace this with DB logic)
-    const mockUser = { username: 'admin', password: 'password123' };
+dotenv.config();
 
-    if (username === mockUser.username && password === mockUser.password) {
-        return { username: mockUser.username };
+class LoginService {
+
+    constructor(users) {
+        this.users = users;
+        this.authenticateUser = this.authenticateUser.bind(this);
     }
-    return null;
+
+    async authenticateUser(username, password) {
+        // Get users from the database (calls the persistence layer)
+        const bookiUser = await this.users.getUserByUsername(username);
+
+        if (password != bookiUser.User_Password) {
+            return false;
+        }
+
+        // Get the JWT token
+        const token = this.getJWTToken(bookiUser);
+
+        return token;
+    }
+
+    getJWTToken(user) {
+        const token = jwt.sign(
+            { userID: user.User_ID, username: user.Username }, process.env.JWT_SECRET, { expiresIn: '1h'}
+        );
+
+        return token;
+    }
 }
+
+export default new LoginService(Users);

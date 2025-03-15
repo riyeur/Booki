@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/LoginPageStyles.css'
 
@@ -9,17 +8,14 @@ const LoginForm = () => {
     const [password, setPassword] = useState('');
     const [loginFailed, setLoginFailed] = useState('');
 
-    const navigate = useNavigate();
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/user/login',
+                await axios.post('http://localhost:5000/api/user/login',
                 { username, password },
                 { headers: { 'Content-Type': 'application/json' }}
             );
 
-            navigate('/dashboard');
         } catch (error) {
             setLoginFailed('Invalid username or password');
         }

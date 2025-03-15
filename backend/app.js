@@ -1,28 +1,34 @@
 import express from 'express';
 import config from './index.js';
 import loginRoute from './routes/LoginRoute.js';
+import connection from './persistence-layer/connection.js';
 import cors from 'cors';
 
 class Main {
     constructor() {
         this.app = express();
-        this.setupMiddleware();
-        this.setupRoutes();
+        this.ExpressCors();
+        this.Routes();
+        this.Database();
     }
 
-    setupMiddleware() {
+    ExpressCors() {
         this.app.use(express.json());
         this.app.use(cors());
     }
 
-    setupRoutes() {
+    Routes() {
         this.app.use('/api/user', loginRoute);
     }
 
+    Database() {
+        connection.connect();
+        console.log('Connected to database.')
+    }
+
     start(port) {
-        this.app.listen(port, () => {
-            console.log(`Server has started on port ${port}`);
-        });
+        this.app.listen(port);
+        console.log('Server has started.')
     }
 }
 
