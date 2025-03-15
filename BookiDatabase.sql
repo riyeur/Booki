@@ -39,11 +39,6 @@ CREATE TABLE BOOK (
     Accessibility VARCHAR(50)
 );
 
--- This is used for the database connection!
-CREATE USER IF NOT EXISTS 'connection'@'localhost' IDENTIFIED BY 'securepassword';
-
--- Grant full access to the database (change as needed)
-GRANT ALL PRIVILEGES ON BOOKI.* TO 'connection'@'localhost';
-
--- Apply the changes
+-- This user is needed for the database connection to the backend
+ALTER USER 'connection'@'localhost' IDENTIFIED WITH mysql_native_password BY 'securepassword';
 FLUSH PRIVILEGES;
