@@ -1,5 +1,6 @@
 import React from 'react';
 import LLMPromptForm from '../components/LLMPromptForm';
+import '../styles/LLMPromptPageStyles.css'
 
 const LLMPromptPage = () => {
     return (

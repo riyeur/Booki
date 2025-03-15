@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/LLMPromptPageStyles.css'
 
 const Length = () => {
 
@@ -9,9 +10,9 @@ const Length = () => {
 
     return (
         <div className='length'>
-            <label>Length</label>
+            <label className='label-length'>Length</label>
             <select className='lengths' name='options'>
-                <option value='' disabled selected></option>
+                <option value=''></option>
                 {length.map((length, index) => (
                     <option key={index} value={length.toLowerCase().replace(/\s+/g, '-')}>
                         {length}

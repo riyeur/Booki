@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/LLMPromptPageStyles.css'
 
 const Language = () => {
     
@@ -8,7 +9,7 @@ const Language = () => {
 
     return (
         <div className='languages'>
-            <label>Language</label>
+            <label className='language-label'>Language</label>
             <select className='language' name='options' defaultValue="English">
                 <option value=''></option>
                 {languages.map((language, index) => (

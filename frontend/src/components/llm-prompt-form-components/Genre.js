@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/LLMPromptPageStyles.css'
 
 const Genre = () => {
     
@@ -12,7 +13,7 @@ const Genre = () => {
 
     return (
         <div className='genres'>
-            <label>Genre</label>
+            <label className='genre-label'>Genre</label>
             <select className='genre' name='options'>
                 <option value='' disabled selected></option>
                 {genres.map((genre, index) => (
