@@ -1,0 +1,148 @@
+/* This page contains the styling for the Profile Page */
+@font-face {
+    font-family: 'Karla-Regular'; 
+    src: url('../fonts/Karla-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Karla-SemiBold'; 
+    src: url('../fonts/Karla-SemiBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(#F2A2B5, #FFD7C0);
+    background-repeat: no-repeat;
+}
+
+
+/* Styling for BookmarkList.js */
+.bookmark-list {
+    background-color: white;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    padding-top: 1.5rem;
+    padding-bottom: 2.3rem;
+    border-radius: 1.5rem;
+    margin-bottom: 2.5rem;
+    margin-top: 2.5rem;
+    max-width: 55vw;
+    box-shadow: 0.2rem 0.2rem 0.3rem #A3586B;
+}
+
+.bookmark-list h1 {
+    font-family: 'Karla-Regular';
+    color: #3E2622;
+    text-align: center;
+}
+
+/* Styling for BookmarkCard.js */
+.bookmark-card h2 {
+    font-family: 'Karla-Regular';
+    color: #3E2622;
+    margin-bottom: 0;
+}
+
+.bookmark-card h3 {
+    font-family: 'Karla-Regular';
+    font-weight: normal;
+    color: #A3586B;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+.bookmark-card p {
+    font-family: 'Karla-Regular';
+    color: #A3586B;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.dark-text{
+    font-family: 'Karla-SemiBold';
+    color: #3E2622;
+}
+
+
+.delete-button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.bookmark-card button {
+    background-color: #F2A2B5;
+    border: none;
+    border-radius: 1.2rem;
+    padding: 0.45rem 1.2rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    font-family: 'Karla-SemiBold';
+    font-size: medium;
+    margin-top: 0.5rem;
+}
+
+.bookmark-card hr {
+    background-color: #8F7C79;
+    height: 0.5px;
+    margin: 0.1rem;
+}
+
+/* Styling for WelcomePanel.js */
+
+.welcome-panel {
+    background-color: white;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    padding-top: 1.5rem;
+    padding-bottom: 2.3rem;
+    border-radius: 1.5rem;
+    margin-bottom: 2.5rem;
+    margin-top: 2rem;
+    max-width: 55vw;
+    box-shadow: 0.2rem 0.2rem 0.3rem #A3586B;
+    text-align: center;
+}
+
+.welcome-panel h1 {
+    font-family: 'Karla-Regular';
+    color: #3E2622;
+}
+
+.signout-button-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.welcome-panel button {
+    background-color: #F2A2B5;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.45rem 2.2rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    font-family: 'Karla-SemiBold';
+    font-size: medium;
+    margin-top: 0.5rem;
+}
+
+/* Styling for BookButton.js */
+.book-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.book-button {
+    margin-left: auto;
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    margin-bottom: 0rem;
+    margin-right: -10rem;
+}
