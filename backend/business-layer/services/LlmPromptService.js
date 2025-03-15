@@ -1,8 +1,9 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");4
+
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 async function run(){
 
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+const genAI = new GoogleGenerativeAI("AIzaSyA-Qr62dRO5Gv_BhTQHJfgC1_D37FzArdE");
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
 //prompt input
