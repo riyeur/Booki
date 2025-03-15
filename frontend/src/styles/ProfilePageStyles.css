@@ -1,1 +1,27 @@
 /* This page contains the styling for the Profile Page */
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(#F2A2B5, #FFD7C0);
+    background-repeat: no-repeat;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bookmark-list {
+    background-color: white;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    padding-top: 0.1rem;
+    padding-bottom: 2.3rem;
+    border-radius: 1.5rem;
+    margin-bottom: 2.5rem;
+    margin-top: 2.5rem;
+    max-width: 55vw;
+    box-shadow: 0.2rem 0.2rem 0.3rem #A3586B;
+}
+
