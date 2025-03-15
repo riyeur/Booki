@@ -9,8 +9,6 @@ const LLMPromptPage = () => {
     const redirectUserProfile = () => {
         const token = sessionStorage.getItem('token');
 
-        navigate('/profile');
-
         if (token) {
             navigate('/profile');
         } else {
