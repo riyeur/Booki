@@ -38,3 +38,12 @@ CREATE TABLE BOOK (
     Author VARCHAR(100),
     Accessibility VARCHAR(50)
 );
+
+-- This is used for the database connection!
+CREATE USER IF NOT EXISTS 'connection'@'localhost' IDENTIFIED BY 'securepassword';
+
+-- Grant full access to the database (change as needed)
+GRANT ALL PRIVILEGES ON BOOKI.* TO 'connection'@'localhost';
+
+-- Apply the changes
+FLUSH PRIVILEGES;
