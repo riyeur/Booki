@@ -16,6 +16,7 @@ class Users {
                     reject(error);
                     return;
                 }
+                
                 resolve(results.length ? results[0] : null);
             });
         });
