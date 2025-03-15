@@ -5,7 +5,7 @@ const Length = () => {
 
     const length = [
         "Novella", "Full-length",
-        "Short Story", "Adult"
+        "Short Story"
     ];
 
     return (

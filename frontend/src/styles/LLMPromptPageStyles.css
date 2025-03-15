@@ -10,11 +10,19 @@ body {
     align-items: center;
 }
 
+.llm-prompt-page {
+    width: 93vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2.5rem;
+}
+
 .llm-prompt-form {
     background-color: white;
     border-radius: 1.3rem;
     padding-left: 3rem;
-    padding-right: 2.9rem;
+    padding-right: 3rem;
     box-shadow: 0 0.1rem 0.3rem #A3586B;
 }
 
@@ -47,7 +55,15 @@ hr {
     padding-bottom: 1.5rem;
 }
 
+.genre, .recommendations, .group, .lengths, .type, .author-input, .language, .description-input, .similar-books-input {
+    border: none;
+    background-color: #edecec;
+    border-radius: 0.2rem;
+}
+
 .what-kind-of-book {
+    margin-bottom: 1.3rem;
+    font-size: large;
     font-family: 'Karla';
     color: #3E2622;
     src: url('../fonts/Karla-Bold.ttf');
@@ -55,7 +71,8 @@ hr {
 
 .genre-label, .recommendations-label, .age-group-label, .label-length, .author-label, .language-label, .accessibility-label, .description-label, .similar-books-label {
     font-size: 0.9rem;
-    font-weight: 500;
+    padding-bottom: 0.4rem;
+    font-weight: 600;
     color: #3E2622;
     font-family: 'Karla';
     src: url('../fonts/Karla-Regular.ttf');
@@ -65,6 +82,11 @@ hr {
     font-size: 0.9rem;
     font-family: 'Karla';
     src: url('../fonts/Karla-Bold.ttf');
+}
+
+textarea {
+    resize: none;
+    padding-left: 0.3rem;
 }
 
 .genres, .age-group, .languages {
@@ -89,7 +111,7 @@ label {
 }
 
 .author-input {
-    padding-right: 9.4rem;
+    padding-right: 9.55rem;
 }
 
 .seventh-row {
@@ -114,6 +136,20 @@ label {
     padding-right: 3rem;
 }
 
+.profile {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    align-items: right;
+}
+
+.profile-logo {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    cursor: pointer;
+    
+}
+
 /* The problem is caused by too many columns in description and similar books and padding in author */
 
 @media (max-width: 768px) {
@@ -130,5 +166,9 @@ label {
 
     select, .author-input, .dropdown {
         max-width: 100%;
+    }
+
+    .author-input {
+        padding-right: none;
     }
 }
