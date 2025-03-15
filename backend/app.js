@@ -7,21 +7,21 @@ import cors from 'cors';
 class Main {
     constructor() {
         this.app = express();
-        this.setupExpressCors();
-        this.setupRoutes();
-        this.setupDatabase();
+        this.ExpressCors();
+        this.Routes();
+        this.Database();
     }
 
-    setupExpressCors() {
+    ExpressCors() {
         this.app.use(express.json());
         this.app.use(cors());
     }
 
-    setupRoutes() {
+    Routes() {
         this.app.use('/api/user', loginRoute);
     }
 
-    setupDatabase() {
+    Database() {
         connection.connect();
         console.log('Connected to database.')
     }
