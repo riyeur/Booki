@@ -6,10 +6,13 @@ const BookmarkCard = ({bookName, authorName, accessibilityInfo, bookDescription}
     return (
         <div className='bookmark-card'>
             <h2>{bookName}</h2>
-            <h3>Author: {authorName}</h3>
-            <p>Accessibility: {accessibilityInfo}</p>
-            <p>Description: {bookDescription}</p>
-            <button>Delete</button>
+            <h3><span className='dark-text'>Author: </span>{authorName}</h3>
+            <p><span className='dark-text'>Accessibility: </span>{accessibilityInfo}</p>
+            <p><span className='dark-text'>Description: </span>{bookDescription}</p>
+            <div className='delete-button-container'> 
+                <button>Delete</button> 
+                </div>
+            <hr/>
         </div>
     );
 };
