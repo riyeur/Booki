@@ -1,14 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../styles/LoginPageStyles.css'
 
 const LoginForm = () => {
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [loginFailed, setLoginFailed] = useState('');
+
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:5000/api/user/login',
+                { username, password },
+                { headers: { 'Content-Type': 'application/json' }}
+            );
+
+            navigate('/dashboard');
+        } catch (error) {
+            setLoginFailed('Invalid username or password');
+        }
+    };
+
     return (
         <div className='login-form'>
             <div className='login-title-and-form'>
                 <h2 className='login-title'>Login</h2>
-                <form className='form-section'>
-                    <input type='text' placeholder='Enter your username' required className='username'></input>
-                    <input type='password' placeholder='Enter your password' required className='password'></input>
+                {loginFailed && <p style={{ color: 'red', textAlign: 'center' }}>{loginFailed}</p>}
+                <form className='form-section' onSubmit={handleSubmit}>
+                    <input type='text' placeholder='Enter your username' required className='username' onChange={(e) => setUsername(e.target.value)}></input>
+                    <input type='password' placeholder='Enter your password' required className='password' onChange={(e) => setPassword(e.target.value)}></input>
                     <input type='submit' value='Sign in' className='sign-in-button'></input>
                 </form>
             </div>

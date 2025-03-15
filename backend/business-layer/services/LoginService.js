@@ -1,3 +1,6 @@
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
 export async function authenticateUser(username, password) {
     // Simulating user authentication (replace this with DB logic)
     const mockUser = { username: 'admin', password: 'password123' };

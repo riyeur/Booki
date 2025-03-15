@@ -16,7 +16,7 @@ class Main {
     }
 
     setupRoutes() {
-        this.app.use('/api/auth', loginRoute);
+        this.app.use('/api/user', loginRoute);
     }
 
     start(port) {
