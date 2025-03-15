@@ -1,0 +1,183 @@
+body {
+    min-height: 100vh;
+    background: linear-gradient(#F2A2B5, #FFD7C0);
+    background-repeat: no-repeat;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.llm-prompt-page {
+    width: 93vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2.5rem;
+}
+
+.llm-prompt-form {
+    background-color: white;
+    border-radius: 1.3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    box-shadow: 0 0.1rem 0.3rem #A3586B;
+}
+
+.question {
+    padding-top: 1rem;
+    padding-bottom: 0.7rem;
+}
+
+.seventh-row {
+    padding-bottom: 1.9rem;
+}
+
+hr {
+    border: none;
+    background-color: #3E2622;
+    height: 0.05rem;
+}
+
+.first-row, .second-row, .third-row, .fourth-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.genres, .number-of-recommendations, .book-type, .age-group, .languages, .length {
+    display: flex;
+    flex-direction: column;
+}
+
+.first-row, .second-row, .third-row, .fourth-row, .fifth-row, .sixth-row {
+    padding-bottom: 1.5rem;
+}
+
+.genre, .recommendations, .group, .lengths, .type, .author-input, .language, .description-input, .similar-books-input {
+    border: none;
+    background-color: #edecec;
+    border-radius: 0.2rem;
+}
+
+.what-kind-of-book {
+    margin-bottom: 1.3rem;
+    font-size: large;
+    font-family: 'Karla';
+    color: #3E2622;
+    src: url('../fonts/Karla-Bold.ttf');
+}
+
+.genre-label, .recommendations-label, .age-group-label, .label-length, .author-label, .language-label, .accessibility-label, .description-label, .similar-books-label {
+    font-size: 0.9rem;
+    padding-bottom: 0.4rem;
+    font-weight: 600;
+    color: #3E2622;
+    font-family: 'Karla';
+    src: url('../fonts/Karla-Regular.ttf');
+}
+
+.description-input, .similar-books-input {
+    font-size: 0.9rem;
+    font-family: 'Karla';
+    src: url('../fonts/Karla-Bold.ttf');
+}
+
+textarea {
+    resize: none;
+    padding-left: 0.3rem;
+}
+
+.genres, .age-group, .languages {
+    padding-right: 1.85rem;
+}
+
+select, .author-input {
+    width: 100%;
+    max-width: 20rem;
+    padding: 0.3rem;
+}
+
+.dropdown {
+    width: 100%;
+    max-width: 20rem;
+}
+
+label {
+    display: inline-block;
+    width: 14rem;
+    text-align: left;
+}
+
+.author-input {
+    padding-right: 9.55rem;
+}
+
+.seventh-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-button {
+    background-color: #F2A2B5;
+    color: #3E2622;
+    border: none;
+    border-radius: 0.4rem;
+    height: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    font-family: 'Karla';
+    src: url('../fonts/Karla-SemiBold.ttf');
+    font-size: 0.9rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.submit-button:hover {
+    background-color: #f4b0c0;
+}
+
+.submit-button:active,
+.submit-button:focus {
+    background-color: #F2A2B5;
+}
+
+.profile {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    align-items: right;
+}
+
+.profile-logo {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    cursor: pointer;
+    
+}
+
+/* The problem is caused by too many columns in description and similar books and padding in author */
+
+@media (max-width: 768px) {
+    .llm-prompt-form {
+        background-color: white;
+        border-radius: 1.3rem;
+    }
+
+    label {
+        width: 100%;
+        display: block;
+        margin-bottom: 0.3rem;
+    }
+
+    .author-input {
+        padding-right: 80%;
+    }
+
+    textarea {
+        width: 100%;
+    }
+}
