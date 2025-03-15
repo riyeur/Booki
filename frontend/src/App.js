@@ -7,6 +7,7 @@ const App = () => {
       <Router>
           <Routes>
               {<Route path="/llm-prompt" element={<LLMPromptPage />} />}
+              <Route path="/" element={<LoginPage />} />
           </Routes>
       </Router>
   );

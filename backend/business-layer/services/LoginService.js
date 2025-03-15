@@ -1,2 +1,9 @@
-// This is a business logic class that calls the persistence layer class to check to see if the username and password are valid, and sends a response
-// to the frontend (presentation layer) class in response
+export async function authenticateUser(username, password) {
+    // Simulating user authentication (replace this with DB logic)
+    const mockUser = { username: 'admin', password: 'password123' };
+
+    if (username === mockUser.username && password === mockUser.password) {
+        return { username: mockUser.username };
+    }
+    return null;
+}
