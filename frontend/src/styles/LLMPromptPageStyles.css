@@ -136,6 +136,15 @@ label {
     padding-right: 3rem;
 }
 
+.submit-button:hover {
+    background-color: #f4b0c0;
+}
+
+.submit-button:active,
+.submit-button:focus {
+    background-color: #F2A2B5;
+}
+
 .profile {
     display: flex;
     width: 100%;
