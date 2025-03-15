@@ -164,11 +164,11 @@ label {
         margin-bottom: 0.3rem;
     }
 
-    select, .author-input, .dropdown {
-        max-width: 100%;
+    .author-input {
+        padding-right: 80%;
     }
 
-    .author-input {
-        padding-right: none;
+    textarea {
+        width: 100%;
     }
 }
