@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS LLM_PROMPT_DATA;
     User_ID INT,
     FOREIGN KEY (User_ID) REFERENCES BOOKI_USER(User_ID),
     Genre VARCHAR(50),
-    Number_Of_Recommendations (50),
+    Number_Of_Recommendations VARCHAR(50),
     Age_Group VARCHAR(50),
     Book_Length VARCHAR(50),
     Author VARCHAR(100),
