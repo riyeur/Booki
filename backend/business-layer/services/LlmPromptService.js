@@ -12,7 +12,7 @@ const prompt = "Explain how AI works";
 //retrieve result
 const result = await model.generateContent(prompt);
 
-//print converted result to text
+//print result as text (debugging purposes only)
 console.log(result.response.text());
 }
 
