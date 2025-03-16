@@ -37,7 +37,7 @@ body {
     margin-bottom: 2.5rem;
     margin-top: 2.5rem;
     max-width: 45vw;
-    box-shadow: 0.2rem 0.2rem 0.3rem #A3586B;
+    box-shadow: 0 0.1rem 0.3rem #A3586B;
 }
 
 .bookmark-list h1 {
@@ -110,7 +110,7 @@ body {
     margin-bottom: 2.5rem;
     margin-top: 2rem;
     max-width: 55vw;
-    box-shadow: 0.2rem 0.2rem 0.3rem #A3586B;
+    box-shadow: 0 0.1rem 0.3rem #A3586B;
     text-align: center;
 }
 
@@ -167,7 +167,7 @@ body {
         margin-bottom: 2.5rem;
         margin-top: 2rem;
         max-width: 55vw;
-        box-shadow: 0.2rem 0.2rem 0.3rem #A3586B;
+        box-shadow: 0 0.1rem 0.3rem #A3586B;
         text-align: center;
     }
 }

@@ -12,7 +12,7 @@ class LoginService {
     }
 
     async authenticateUser(username, password) {
-        // Get users from the database (calls the persistence layer)
+        // Get user from the database (calls the persistence layer)
         const bookiUser = await this.users.getUserByUsername(username);
 
         if (password != bookiUser.User_Password) {

@@ -1,10 +1,8 @@
-import express from 'express';
+import { Router } from 'express';
 import SignupController from '../presentation-layer/SignupController.js';
 
-const router = express.Router();
-const signupController = new SignupController();
+const router = Router();
 
-// POST endpoint for user registration
-router.post('/signup', signupController.registerUser);
+router.post('/signup', SignupController.registerUser);
 
 export default router;
