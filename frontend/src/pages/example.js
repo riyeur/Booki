@@ -1,1 +1,0 @@
-// Full page that represents the UI
