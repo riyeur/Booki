@@ -2,7 +2,7 @@
 import React from 'react';
 import '../styles/ProfilePageStyles.css'
 
-const BookmarkCard = ({bookName, authorName, accessibilityInfo, bookDescription}) => {
+const BookmarkCard = ({bookName, authorName, accessibilityInfo, bookDescription, buttonText, onButtonClick}) => {
     return (
         <div className='bookmark-card'>
             <h2>{bookName}</h2>
@@ -10,7 +10,7 @@ const BookmarkCard = ({bookName, authorName, accessibilityInfo, bookDescription}
             <p><span className='dark-text'>Accessibility: </span>{accessibilityInfo}</p>
             <p><span className='dark-text'>Description: </span>{bookDescription}</p>
             <div className='delete-button-container'> 
-                <button>Delete</button> 
+                <button onClick={onButtonClick}>{buttonText}</button> 
                 </div>
             <hr/>
         </div>
