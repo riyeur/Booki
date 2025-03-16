@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Genre from '../components/llm-prompt-form-components/Genre';
 import AgeGroup from '../components/llm-prompt-form-components/AgeGroup';
 import Length from '../components/llm-prompt-form-components/Length';
@@ -11,6 +11,33 @@ import NumberOfRecommendations from '../components/llm-prompt-form-components/Nu
 import '../styles/LLMPromptPageStyles.css'
 
 const LLMPromptForm = () => {
+
+
+    // add usestate to track user data from prompt form
+    const [formData, formInfo] = useState ({
+        genre: "",
+        ageGroup: "",
+        length : "",
+        author: "",
+        language: "",
+        accessibility: "",
+        description: "",
+        similarBooks: "",
+        numReccomendations: "",
+
+    });
+
+
+    //submit action
+
+    const handleSubmit = async (e) => {
+
+       
+        
+
+
+    };
+     
 
     return (
         <div className='llm-prompt-form'>
