@@ -19,9 +19,28 @@ by a single semicolon, nothing else.`;
 
 //retrieve result
 const result = await model.generateContent(prompt);
+const textResult = await result.response.text();
+
+//clean up results
+const parsedTextResult = parseLLMResponse(textResult);
+
+//parse LLM response into a JSON array
+function parseLLMResponse(response) {
+    // will result in an array of JSON-formatted strings
+    const arrayOfStrings = response.split(';')
+    .map(item => item.trim()) //remove whitespace and newlines
+    .filter(item => item !== '') //remove empty strings if any
+    .map(item => item.replace(/^'|'$/g, '')); //remove surrounding single quotes
+
+    //parse the strings into JSON objects
+    const jsonArray = arrayOfStrings.map(item => JSON.parse(item))
+
+    return jsonArray;
+}
 
 //print result as text (debugging purposes only)
-console.log(result.response.text());
+console.log(parsedTextResult);
+
 }
 
 run();
