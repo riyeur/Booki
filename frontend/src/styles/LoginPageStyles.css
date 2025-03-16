@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'Karla-Regular'; 
+    src: url('../fonts/Karla-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Karla-SemiBold'; 
+    src: url('../fonts/Karla-SemiBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 body {
     min-height: 100vh;
     background: linear-gradient(#F2A2B5, #FFD7C0);

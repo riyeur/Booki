@@ -40,5 +40,8 @@ CREATE TABLE BOOK (
 );
 
 -- This user is needed for the database connection to the backend
+DROP USER IF EXISTS 'connection'@'localhost';
+CREATE USER 'connection'@'localhost' IDENTIFIED BY 'securepassword';
+GRANT ALL PRIVILEGES ON booki.* TO 'connection'@'localhost';
 ALTER USER 'connection'@'localhost' IDENTIFIED WITH mysql_native_password BY 'securepassword';
 FLUSH PRIVILEGES;

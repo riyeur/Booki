@@ -19,6 +19,12 @@ body {
     background-repeat: no-repeat;
 }
 
+.profile-page {
+    width: 94vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 /* Styling for BookmarkList.js */
 .bookmark-list {
@@ -30,7 +36,7 @@ body {
     border-radius: 1.5rem;
     margin-bottom: 2.5rem;
     margin-top: 2.5rem;
-    max-width: 55vw;
+    max-width: 45vw;
     box-shadow: 0.2rem 0.2rem 0.3rem #A3586B;
 }
 
@@ -96,8 +102,8 @@ body {
 
 .welcome-panel {
     background-color: white;
-    padding-left: 2.5vw;
-    padding-right: 2.5vw;
+    padding-left: 15rem;
+    padding-right: 15rem;
     padding-top: 1.5rem;
     padding-bottom: 2.3rem;
     border-radius: 1.5rem;
@@ -135,6 +141,7 @@ body {
 .book-button-container {
     display: flex;
     justify-content: flex-end;
+    width: 100%
 }
 
 .book-button {
@@ -142,7 +149,25 @@ body {
     background-color: transparent;
     border: transparent;
     cursor: pointer;
-    margin-top: 1.5rem;
-    margin-bottom: 0rem;
-    margin-right: -10rem;
+    display: flex;
+    width: 100%;
+    padding-top: 2rem;
+    justify-content: right;
+    align-items: right;
+}
+
+@media (max-width: 768px) {
+    .welcome-panel {
+        background-color: white;
+        padding-left: 0rem;
+        padding-right: 0rem;
+        padding-top: 1.5rem;
+        padding-bottom: 2.3rem;
+        border-radius: 1.5rem;
+        margin-bottom: 2.5rem;
+        margin-top: 2rem;
+        max-width: 55vw;
+        box-shadow: 0.2rem 0.2rem 0.3rem #A3586B;
+        text-align: center;
+    }
 }
