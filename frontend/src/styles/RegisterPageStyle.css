@@ -15,7 +15,7 @@ body {
     padding-left: 4rem;
     padding-right: 4rem;
     border-radius: 1.5rem;
-    padding-top: 1.5rem;
+    padding-top: 1.45rem;
     padding-bottom: 2.3rem;
     box-shadow: 0.5rem 0.5rem #A3586B;
 }
@@ -149,6 +149,21 @@ body {
     font-family: 'Karla';
     src: url('../fonts/Karla-Bold.ttf');
 }
+
+.register-booki-logo {
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-components {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 @media (max-width: 768px) {
     .register-book, .book-image {
