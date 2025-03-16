@@ -10,50 +10,63 @@ body {
     align-items: center;
 }
 
-.booki-logo {
-    margin-bottom: 2rem;
+.signup-page {
+    margin-top: -3rem;
 }
 
-.title {
-    text-align: center;
-}
-
-.components {
-    display: flex;
-    flex-direction: column;
-}
-
-.login-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 4rem;
-}
-
-.login-form {
+.register-form {
     background-color: white;
-    padding-left: 2.4rem;
-    padding-right: 2.4rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
     border-radius: 1.5rem;
+    padding-top: 1.45rem;
     padding-bottom: 2.3rem;
     box-shadow: 0.5rem 0.5rem #A3586B;
 }
 
-.login-title {
+.register-form-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-form-section input {
+    width: 17rem;
+}
+
+.register-title {
     text-align: center;
-    margin-top: 2rem;
     margin-bottom: 1.5rem;
     color: #3E2622;
     font-family: 'Karla';
     src: url('../fonts/Karla-Bold.ttf');
 }
 
-.form-section {
+.register-content {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
 }
 
-.sign-in-button {
+.register-email, .register-username {
+    height: 2.4rem;
+    margin-bottom: 0.7rem;
+    text-indent: 0.7rem;
+    font-family: 'Karla';
+    src: url('../fonts/Karla-Regular.ttf');
+    font-size: medium;
+}
+
+.register-password {
+    height: 2.4rem;
+    margin-bottom: 0.9rem;
+    text-indent: 0.7rem;
+    font-family: 'Karla';
+    src: url('../fonts/Karla-Regular.ttf');
+    font-size: medium;
+}
+
+.register-button {
     background-color: #F2A2B5;
     border: none;
     border-radius: 0.5rem;
@@ -66,43 +79,20 @@ body {
     font-size: medium;
 }
 
-.sign-in-button:hover {
+.register-button:hover {
     background-color: #f4b0c0;
 }
 
-.sign-in-button:active,
-.sign-in-button:focus {
+.register-button:active,
+.register-button:focus {
     background-color: #f4b0c0;
 }
 
-input {
-    border: 1.5px solid black;
-    border-radius: 20px;
+.register-second-section {
+    text-align: center;
 }
 
-.username {
-    height: 2.4rem;
-    margin-bottom: 0.7rem;
-    text-indent: 0.7rem;
-    font-family: 'Karla';
-    src: url('../fonts/Karla-Regular.ttf');
-    font-size: medium;
-}
-
-.password {
-    height: 2.4rem;
-    margin-bottom: 0.9rem;
-    text-indent: 0.7rem;
-    font-family: 'Karla';
-    src: url('../fonts/Karla-Regular.ttf');
-    font-size: medium;
-}
-
-input:focus {
-    background-color: #FFFFFF;
-}
-
-.dont-have-account {
+.register-already-have-account {
     font-size: small;
     text-align: center;
     padding-top: 0.1rem;
@@ -111,17 +101,7 @@ input:focus {
     src: url('../fonts/Karla-Regular.ttf');
 }
 
-hr {
-    border: none;
-    background-color: #000000;
-    height: 0.05rem;
-}
-
-.second-section {
-    text-align: center;
-}
-
-.register {
+.register-login {
     background-color: #F2A2B5;
     border: none;
     border-radius: 0.5rem;
@@ -134,11 +114,16 @@ hr {
     font-size: medium;
 }
 
-.register:hover {
+.register-login:hover {
     background-color: #f4b0c0;
 }
 
-.continue-as-guest {
+.register-login:active,
+.register-login:focus {
+    background-color: #f4b0c0;
+}
+
+.register-continue-as-guest {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -146,13 +131,13 @@ hr {
     padding-top: 0.1rem;
 }
 
-.continue-as {
+.register-continue-as {
     margin-right: 0.3rem;
     font-family: 'Karla';
     src: url('../fonts/Karla-Regular.ttf');
 }
 
-.guest {
+.register-guest {
     text-decoration: none;
     color: #E491A6;
     font-weight: bold;
@@ -160,11 +145,39 @@ hr {
     src: url('../fonts/Karla-Bold.ttf');
 }
 
-.login-error {
+.registration-error {
     color: #bf1b44;
     text-align: center;
     margin-top: -0.1rem;
     font-weight: bold;
     font-family: 'Karla';
     src: url('../fonts/Karla-Bold.ttf');
+}
+
+.register-booki-logo {
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-components {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media (max-width: 768px) {
+    .register-book, .book-image {
+        display: none;
+    }
+
+    
+    .register-form {
+        background-color: white;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
 }

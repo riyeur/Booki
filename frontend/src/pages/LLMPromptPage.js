@@ -19,7 +19,7 @@ const LLMPromptPage = () => {
     return (
         <div className='llm-prompt-page'>
             <div className='profile' onClick={redirectUserProfile}>
-                <img className='profile-logo' src='/profile.png' alt='Profile pic' height='45' width='auto'/>
+                <img className='profile-logo' src='/profile.png' alt='Profile pic' height='60' width='auto'/>
             </div>
             <LLMPromptForm></LLMPromptForm>
         </div>
