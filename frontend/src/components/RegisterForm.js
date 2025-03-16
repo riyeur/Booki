@@ -6,14 +6,14 @@ const RegisterForm = () => {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [registrationFailed, setRegistrationFailed] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         
         try {
-            // Call your backend API to register the user
-            const response = await fetch('http://localhost:3000/api/user/signup', {
+            const response = await fetch('http://localhost:5000/api/user/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -22,66 +22,43 @@ const RegisterForm = () => {
             });
 
             if (response.ok) {
-                // Registration successful - redirect to login page
-                navigate('/login');
+                navigate('/');
             } else {
-                // Handle registration errors
-                const errorData = await response.json();
-                alert(`Registration failed: ${errorData.message}`);
+                setRegistrationFailed('Registration Failed');
             }
         } catch (error) {
-            console.error('Error during registration:', error);
-            alert('Registration failed. Please try again.');
+            setRegistrationFailed('Registration Failed');
         }
     };
 
     return (
-        <div className='login-form'>
-            <div className='login-content'>
-                <img src='./book.png' alt='Book' className='book-image' />
-                
-                <div className='login-title-and-form'>
-                    <h2 className='login-title'>Sign Up</h2>
-                    <form className='form-section' onSubmit={handleSubmit}>
-                        <input
-                            type='email'
-                            placeholder='Enter your email'
-                            required
-                            className='email'
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                        <input
-                            type='text'
-                            placeholder='Enter your username'
-                            required
-                            className='username'
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
-                        <input
-                            type='password'
-                            placeholder='Enter your password'
-                            required
-                            className='password'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                        <input
-                            type='submit'
-                            value='Register'
-                            className='register-button'
-                        />
-                    </form>
+        <div className='register-form'>
+            <div className='register-content'>
+                <div className='register-book'>
+                    <img src='./book.png' alt='Book' className='book-image' height='230' width='auto'/>
                 </div>
-            </div>
-            <hr className='boundary'></hr>
-            <div className='second-section'>
-                <p className='already-have-account'>Already have an account?</p>
-                <button className='login' onClick={() => navigate('/login')}>Login</button>
-                <div className='continue-as-guest'>
-                    <p className='continue-as'>or continue as </p>
-                    <a href='/' className='guest'>Guest</a>
+                <div className='right-side'>
+                    <div className='register-main-content'>
+                        <div className='register-title-and-form'>
+                            <h2 className='register-title'>Sign Up</h2>
+                            <form className='register-form-section' onSubmit={handleSubmit}>
+                                <input type='email' placeholder='Enter your email' required className='register-email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                                <input type='text' placeholder='Enter your username' required className='register-username' value={username} onChange={(e) => setUsername(e.target.value)}/>
+                                <input type='password' placeholder='Enter your password' required className='register-password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                                <input type='submit' value='Register' className='register-button'/>
+                            </form>
+                            {registrationFailed && <p className='registration-error'>{registrationFailed}</p>}
+                        </div>
+                    </div>
+                    <hr className='register-boundary'></hr>
+                    <div className='register-second-section'>
+                        <p className='register-already-have-account'>Already have an account?</p>
+                        <button className='register-login' onClick={() => navigate('/')}>Login</button>
+                        <div className='register-continue-as-guest'>
+                            <p className='register-continue-as'>or continue as </p>
+                            <a href='/llm-prompt' className='register-guest'>Guest</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

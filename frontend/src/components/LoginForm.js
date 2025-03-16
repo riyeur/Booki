@@ -29,7 +29,7 @@ const LoginForm = () => {
     };
 
     const registerRoute = () => {
-        navigate('/register');
+        navigate('/signup');
     }
 
     return (
