@@ -56,6 +56,7 @@ body {
 /* Styling for BookmarkCard.js */
 .bookmark-card h2 {
     font-family: 'Karla-Regular';
+    font-size: 1.3rem;
     color: #3E2622;
     margin-bottom: 0;
 }
@@ -95,7 +96,7 @@ body {
     margin-bottom: 1rem;
     cursor: pointer;
     font-family: 'Karla-SemiBold';
-    font-size: medium;
+    font-size: 1rem;
     margin-top: 0.5rem;
 }
 
@@ -140,7 +141,7 @@ body {
     margin-bottom: 1rem;
     cursor: pointer;
     font-family: 'Karla-SemiBold';
-    font-size: medium;
+    font-size: 1rem;
     margin-top: 0.5rem;
 }
 
@@ -157,7 +158,6 @@ body {
     border: transparent;
     cursor: pointer;
     display: flex;
-    width: 100%;
     padding-top: 2rem;
     justify-content: right;
     align-items: right;
