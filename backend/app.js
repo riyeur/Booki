@@ -1,6 +1,7 @@
 import express from 'express';
 import config from './index.js';
 import loginRoute from './routes/LoginRoute.js';
+import signupRoute from './routes/signupRoute.js';
 import connection from './persistence-layer/connection.js';
 import cors from 'cors';
 
@@ -18,17 +19,19 @@ class Main {
     }
 
     Routes() {
-        this.app.use('/api/user', loginRoute);
+        this.app.use('/api/user/login', loginRoute);
+        this.app.use('/api/user/signup', signupRoute);
     }
 
     Database() {
         connection.connect();
-        console.log('Connected to database.')
+        console.log('Connected to database.');
     }
 
     start(port) {
-        this.app.listen(port);
-        console.log('Server has started.')
+        this.app.listen(port, () => {
+            console.log(`Server has started on port ${port}`);
+        });
     }
 }
 

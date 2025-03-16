@@ -1,0 +1,241 @@
+/* Import Fonts Correctly */
+@font-face {
+    font-family: 'Karla';
+    src: url('../fonts/Karla-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Karla-Bold';
+    src: url('../fonts/Karla-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Karla-SemiBold';
+    src: url('../fonts/Karla-SemiBold.ttf');
+}
+
+/* Global Body Styling */
+body {
+    min-height: 100vh;
+    background: linear-gradient(#F2A2B5, #FFD7C0);
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0; /* Remove default margin */
+    font-family: 'Karla', sans-serif;
+}
+
+/* Booki Logo Styling */
+.booki-logo {
+    margin-bottom: 2rem;
+}
+
+/* Center Align Title */
+.title {
+    text-align: center;
+}
+
+/* Flexbox for Components */
+.components {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+}
+
+/* Login Page Styling */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 4rem;
+    width: 100%; /* Ensure full width */
+}
+
+/* New styling for login content - Side by side layout */
+.login-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem; /* Space between image and form */
+    width: 100%;
+    max-width: 900px; /* Increased max-width to accommodate both elements */
+}
+
+/* Book image styling */
+.book-image {
+    max-width: 40%; /* Size of the image relative to container */
+    height: auto;
+    border-radius: 1rem;
+    box-shadow: 0.3rem 0.3rem #A3586B;
+    margin-top: 1rem; /* Add margin-top to move the image down */
+}
+
+
+.login-form {
+    background-color: white;
+    padding: 2.5rem 3rem 1.5rem; /* Reduced bottom padding */
+    border-radius: 1.5rem;
+    box-shadow: 0.5rem 0.5rem #A3586B;
+    width: 55%; /* Increased width for the form */
+    max-width: 500px; /* Increased max width */
+    min-height: auto; /* Changed to auto to fit content */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Login Title */
+.login-title {
+    text-align: center;
+    margin-top: 0; /* Reduced top margin to move signup section up */
+    margin-bottom: 1.2rem; /* Slightly reduced bottom margin */
+    color: #3E2622;
+    font-family: 'Karla-Bold', sans-serif;
+    font-size: 2rem; /* Increase font size */
+}
+
+/* Form Sections */
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Slightly reduced gap to move elements up */
+    margin-top: -0.5rem; /* Negative margin to pull fields up */
+}
+
+/* Input Styling */
+input {
+    border: 1.5px solid black;
+    border-radius: 20px;
+    padding-left: 1rem;
+    font-size: 1rem;
+    height: 5vh;
+}
+
+input:focus {
+    background-color: #FFFFFF;
+}
+
+/* Sign-in Button */
+.sign-in-button {
+    background-color: #F2A2B5 !important;
+    border: none;
+    border-radius: 0.5rem;
+    height: 4.1vh;
+    font-weight: 600;
+    margin-bottom: 3rem !important; /* Increased bottom margin with !important */
+    cursor: pointer;
+    font-family: 'Karla-SemiBold', sans-serif;
+    font-size: medium;
+}
+
+/* Register Button */
+.register {
+    background-color: #F2A2B5 !important;  /* Ensure it stays pink */
+    border: none;
+    border-radius: 0.5rem;
+    height: 4.1vh;
+    width: 13rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Karla-SemiBold', sans-serif;
+    font-size: medium;
+    margin-top: 1rem; /* Add margin top for spacing */
+    margin-bottom: 0.8rem; /* Added bottom margin for spacing */
+    align-self: center; /* Center the button */
+}
+
+/* Already Have Account section - Now a flex container */
+.account-login-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 3rem; /* Increased from 1.5rem to 3rem to create more space */
+    margin-bottom: 1rem;
+}
+
+
+/* Already Have Account Text - Now inline with login button */
+.already-have-account {
+    font-size: small;
+    font-family: 'Karla-Regular', sans-serif;
+    margin: 0; /* Remove any default margin */
+}
+
+/* Login link/button styling */
+.login-link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-family: 'Karla-Bold', sans-serif;
+    background-color: #F2A2B5;
+    padding: 0.4rem 1rem;
+    border-radius: 0.5rem;
+    font-size: small;
+    cursor: pointer;
+    border: none;
+}
+
+/* Horizontal Divider */
+hr {
+    border: none;
+    background-color: #000000;
+    height: 0.05rem;
+    margin: 1.5rem 0 1rem; /* Increased top margin to move the line down further */
+    width: 100%;
+}
+
+
+/* Second Section (Continue As Guest) */
+.second-section {
+    text-align: center;
+    margin-top: 0; /* Removed top margin */
+    margin-bottom: 0.5rem; /* Added a small bottom margin */
+}
+
+.continue-as-guest {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+    padding-top: 0.1rem;
+}
+
+.continue-as {
+    margin-right: 0.3rem;
+    font-family: 'Karla-Regular', sans-serif;
+}
+
+.guest {
+    text-decoration: none;
+    color: #E491A6;
+    font-weight: bold;
+    font-family: 'Karla-Bold', sans-serif;
+}
+
+/* Media query for responsive layout */
+@media screen and (max-width: 768px) {
+    .login-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .book-image {
+        max-width: 60%;
+        margin-bottom: 1rem;
+    }
+    
+    .login-form {
+        width: 85%;
+        padding: 2rem 1.5rem 1.5rem; /* Adjusted padding for mobile */
+    }
+    
+    .account-login-section {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .login-link {
+        padding: 0.4rem 2rem;
+    }
+}
