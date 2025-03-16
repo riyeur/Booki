@@ -46,6 +46,13 @@ body {
     text-align: center;
 }
 
+.bookmark-list hr {
+    background-color: #8F7C79;
+    height: 0.5px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
 /* Styling for BookmarkCard.js */
 .bookmark-card h2 {
     font-family: 'Karla-Regular';
