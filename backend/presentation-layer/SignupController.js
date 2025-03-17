@@ -1,5 +1,4 @@
-// This should get all the sign-up requests (API requests) and then call the LoginService.js in the business layer to validate the request
-// This is technically a part of the presentation layer along with the React code
+// controllers/SignupController.js
 import SignupService from '../business-layer/services/SignupService.js';
 
 class SignupController {
@@ -14,18 +13,19 @@ class SignupController {
             const { email, username, password } = request.body;
 
             if (!email || !username || !password) {
-                response.status(400)
-                return response.json({ message: 'All fields are required' });
+                return response.status(400).json({ message: 'All fields are required' });
             }
             
             const result = await this.signupService.registerUser(email, username, password);
+            
+            if (!result.success) {
+                return response.status(400).json({ message: result.message });
+            }
 
-            response.status(201)
-            return response.json({ message: `Registration successful`, userId: result.userId });
+            return response.status(201).json({ message: result.message, userId: result.userId });
 
         } catch (error) {
-            response.status(500);
-            return response.json({ message: `Registration failed` });
+            return response.status(500).json({ message: `Registration failed` });
         }
     }
 }

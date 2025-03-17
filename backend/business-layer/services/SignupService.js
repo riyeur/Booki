@@ -9,13 +9,19 @@ class SignupService {
     }
 
     async registerUser(email, username, password) {
+
+        const existingUsername = await this.users.getUserByUsername(username);
+            if (existingUsername)
+                {
+                return { success: false, message: "Username is already taken" };
+            }
+        
         const userId = await this.users.createUser(email, username, password);
 
         if (!userId) {
-            return false;
+            return { success: false, message: "Could not create account" };
         }
-        
-        return { userId };
+        return { success: true, message: "Registration Complete"};
     }
 }
 
