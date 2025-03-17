@@ -6,7 +6,7 @@ const Description = () => {
         <div className='description'>
             <label className='description-label'>Description</label>
             <div className='extra-description'>
-                <textarea rows={10} cols={62} className='description-input'></textarea>
+                <textarea rows={10} cols={70} className='description-input'></textarea>
             </div>
         </div>
     );
