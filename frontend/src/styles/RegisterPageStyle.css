@@ -177,6 +177,15 @@ body {
     font-weight: 700;
 }
 
+.registration-success {
+    color: #70ca7e;
+    text-align: center;
+    margin-top: -0.1rem;
+    font-weight: bold;
+    font-family: 'Karla';
+    font-weight: 700;
+}
+
 .register-booki-logo {
     display: flex;
     margin-bottom: 2rem;

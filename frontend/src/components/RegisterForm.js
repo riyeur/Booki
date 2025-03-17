@@ -22,26 +22,19 @@ const RegisterForm = () => {
                 body: JSON.stringify({ email, username, password }),
             });
             
-            // Parse the JSON response
             const data = await response.json();
             
             if (response.ok) {
-                // Show success message briefly before navigating
                 setIsError(false);
-                setRegistrationMessage(data.message || 'Registration Complete');
-                
-                // Navigate after a short delay to show the success message
-                setTimeout(() => {
-                    navigate('/');
-                }, 1500);
+                setRegistrationMessage(data.message);
+                navigate('/');
             } else {
-                // Show the specific error message from the backend
                 setIsError(true);
-                setRegistrationMessage(data.message || 'Registration Failed');
+                setRegistrationMessage(data.message);
             }
         } catch (error) {
             setIsError(true);
-            setRegistrationMessage('Unable to connect to server');
+            setRegistrationMessage('Registration failed');
         }
     };
     
