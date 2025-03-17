@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { getBookRecs } from '../services/LlmService.js'
 import Genre from '../components/llm-prompt-form-components/Genre';
 import AgeGroup from '../components/llm-prompt-form-components/AgeGroup';
 import Length from '../components/llm-prompt-form-components/Length';
@@ -12,34 +13,83 @@ import '../styles/LLMPromptPageStyles.css'
 
 const LLMPromptForm = () => {
 
+     // add usestate to track user data from prompt form
+     const [formData, setFormData] = useState ({
+        genre: "",
+        ageGroup: "",
+        length : "",
+        author: "",
+        language: "",
+        accessibility: "",
+        description: "",
+        similarBooks: "",
+        numRecommendations: "",
+
+    });
+
+    //track AI response (mainly for UI) ** NOT IMPLEMENTED YET
+    const [loading, setLoading] = useState(false);
+    const [recs, setRecs] = useState([]);
+
+    //handle input changes
+    const handleChange = (e) =>{
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value // changes the specific element that was changed by the user
+        })
+    }
+
+
+    //submit button action
+    const handleSubmit = async (e) => {
+
+        e.preventDefault(); // prevent page loading/resetting
+        setLoading(true);
+        setRecs([]);
+
+        try{
+            const results = await getBookRecs(formData);
+            console.log("LLM response:", results);
+        } catch(error){
+            console.log("Error retrieving data :/, error:", error);
+        }
+
+        setLoading(false);
+
+        console.log(loading);
+
+    };
+
     return (
+
+        
         <div className='llm-prompt-form'>
             <div className='question'>
                 <h4 className='what-kind-of-book'>What kind of book would you like to read?</h4>
                 <hr className='boundary'/>
             </div>
             <div className='llm-prompt-form-inputs'>
-                <form className='form-inputs'>
+                <form className='form-inputs' onSubmit ={handleSubmit}>
                     <div className='first-row'>
-                        <Genre></Genre>
-                        <NumberOfRecommendations></NumberOfRecommendations>
+                        <Genre name="genre" onChange={handleChange}></Genre>
+                        <NumberOfRecommendations name="numRecommendations" onChange={handleChange} ></NumberOfRecommendations>
                     </div>
                     <div className='second-row'>
-                        <AgeGroup></AgeGroup>
-                        <Length></Length>
+                        <AgeGroup name="ageGroup" onChange={handleChange}></AgeGroup>
+                        <Length name="length" onChange={handleChange}></Length>
                     </div>
                     <div className='third-row'>
-                        <Author></Author>
+                        <Author name="author" onChange={handleChange}></Author>
                     </div>
                     <div className='fourth-row'>
-                        <Language></Language>
-                        <Accessibility></Accessibility>
+                        <Language name="language" onChange={handleChange}></Language>
+                        <Accessibility name="accessibility" onChange={handleChange}></Accessibility>
                     </div>
                     <div className='fifth-row'>
-                        <Description></Description>
+                        <Description name="description" onChange={handleChange}></Description>
                     </div>
                     <div className='sixth-row'>
-                        <SimilarBooks></SimilarBooks>
+                        <SimilarBooks name="similarBooks" onChange={handleChange}></SimilarBooks>
                     </div>
                     <div className='seventh-row'>
                         <input type='submit' value='Submit' className='submit-button'></input>
