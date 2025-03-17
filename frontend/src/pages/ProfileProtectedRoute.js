@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
-const ProtectedRoute = () => {
+const ProfileProtectedRoute = () => {
     const token = sessionStorage.getItem('token');
 
     if (!token) {
@@ -10,4 +10,4 @@ const ProtectedRoute = () => {
     return <Outlet />;
 }
 
-export default ProtectedRoute;
+export default ProfileProtectedRoute;

@@ -3,17 +3,20 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LLMPromptPage from './pages/LLMPromptPage';
 import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
-import ProtectedRoute from './pages/ProtectedRoute';
+import ProfileProtectedRoute from './pages/ProfileProtectedRoute';
 import SignupPage from './pages/signupPage';
+import LoginSignUpProtectedRoute from './pages/LoginSignUpProtectedRoute';
 import ResultsPage from './pages/ResultsPage';
 
 const App = () => {
   return (
       <Router>
           <Routes>
-              <Route path="/" element={<LoginPage />} />
-              <Route path="/signup" element={<SignupPage />} />
-              <Route element={<ProtectedRoute/>}>
+              <Route element={<LoginSignUpProtectedRoute/>}>
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
+              </Route>
+              <Route element={<ProfileProtectedRoute/>}>
                 <Route path="/profile" element={<ProfilePage />} />
               </Route>
               <Route path="/llm-prompt" element={<LLMPromptPage />} />
