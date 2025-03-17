@@ -1,11 +1,11 @@
 import mysql from 'mysql2';
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    port: '3306',
-    user: 'connection',
-    password: 'securepassword',
-    database: 'booki'
+    host: process.env.MYSQLHOST,
+    port: process.env.MYSQLPORT,
+    user: process.env.MYSQLUSER,
+    password: process.env.MYSQLPASSWORD,
+    database: process.env.MYSQL_DATABASE
   })
 
 export default connection;
