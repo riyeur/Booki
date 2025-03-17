@@ -1,7 +1,10 @@
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
+
 export default async function run(formData){
+
+    
 
     const genAI = new GoogleGenerativeAI("AIzaSyA-Qr62dRO5Gv_BhTQHJfgC1_D37FzArdE");
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
@@ -13,14 +16,23 @@ export default async function run(formData){
     provide the information as a string that can be converted to JSON format 
     (i.e. '{"Book":"name of the book", "Author":"name of author", "Accessibility":
     "information about if the book is available as a physical copy, digital, audiobook, 
-    braille, etc", "Description": "description of book"}'). Only provide the JSON-formatted 
+    braille, etc", "Description": "description of book"}'). 
+    
+    Only provide the JSON-formatted 
     string, do not include anything else in your response. Each string should be separated 
-    by a single semicolon, nothing else.`;
+    by a single semicolon, nothing else. Do not include any explanations, or additional text.`;
+
+    console.log("formData:", formData);
+    console.log("Genre:", formData.genre);
+
 
     try{
     //retrieve result
     const result = await model.generateContent(prompt);
     const textResult = await result.response.text(); //retrieve result as text
+
+    //debug
+    console.log("Raw LLM Response:", textResult);
 
     //parse result into a JSON object and return
     return (parseLLMResponse(textResult));

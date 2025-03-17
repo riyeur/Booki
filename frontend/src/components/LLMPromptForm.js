@@ -33,21 +33,29 @@ const LLMPromptForm = () => {
 
     //handle input changes
     const handleChange = (e) =>{
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value // changes the specific element that was changed by the user
-        })
-    }
+        
+        const{name, value} = e.target;
+        console.error(`DEBUG DEBUG DEBUG updating ${name} to ${value}`);//debug
+
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value // changes the specific element that was changed by the user
+        }));
+        
+    };
 
 
     //submit button action
     const handleSubmit = async (e) => {
 
         e.preventDefault(); // prevent page loading/resetting
+
+        console.log("final formData:", formData);
         setLoading(true);
         setRecs([]);
 
         try{
+            console.log("Sending request with formData:", formData);
             const results = await getBookRecs(formData);
             console.log("LLM response:", results);
         } catch(error){
@@ -96,6 +104,24 @@ const LLMPromptForm = () => {
                     </div>
                 </form>
             </div>
+
+            {loading && <p className="loading">Generating recommendations...</p>}
+
+            {/* Display Recommendations */}
+            {recs.length > 0 && (
+                <div className='recommendations'>
+                    <h3>Book Recommendations:</h3>
+                    <ul>
+                        {recs.map((book, index) => (
+                            <li key={index} className="book-item">
+                                <strong>{book.Book}</strong> by {book.Author}
+                                <p><strong>Accessibility:</strong> {book.Accessibility}</p>
+                                <p><strong>Description:</strong> {book.Description}</p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
     );
 }

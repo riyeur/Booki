@@ -2,7 +2,7 @@
 
 export async function getBookRecs(formData){
     try{
-        const response = await fetch("http://localhost:3000/api/generate-books", {
+        const response = await fetch("http://localhost:3000/api/llm/generate-books", {
 
             method: "POST",
             headers: {
