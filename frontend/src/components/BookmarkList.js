@@ -7,7 +7,7 @@ const BookmarkList = ({title, bookmarks, buttonText, handleClick}) => {
 
     return (
         <div className='bookmark-list'>
-            <h1>{title}</h1>
+            <p className='bookmarks-title'>{title}</p>
             <hr/>
             {   
                 // looping through all the bookmarks and creating a BookmarkCard component for each

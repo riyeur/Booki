@@ -14,9 +14,9 @@ const WelcomePanel = () => {
 
     return(
         <div className='welcome-panel'>
-            <h1>Welcome back, {username}!</h1>
+            <p className='welcome-back'>Welcome back, {username}!</p>
             <div className='signout-button-container'> 
-                <button>Sign out</button> 
+                <button className='sign-out'>Sign out</button> 
                 </div>
         </div>
     );

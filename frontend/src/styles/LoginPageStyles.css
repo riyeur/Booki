@@ -1,3 +1,25 @@
+@font-face {
+    font-family: 'Karla'; 
+    src: url('../fonts/Karla-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Karla'; 
+    src: url('../fonts/Karla-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Karla'; 
+    src: url('../fonts/Karla-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
 body {
     min-height: 100vh;
     background: linear-gradient(#F2A2B5, #FFD7C0);
@@ -45,7 +67,7 @@ body {
     margin-bottom: 1.5rem;
     color: #3E2622;
     font-family: 'Karla';
-    src: url('../fonts/Karla-Bold.ttf');
+    font-weight: 700;
 }
 
 .form-section {
@@ -62,7 +84,7 @@ body {
     margin-bottom: 1rem;
     cursor: pointer;
     font-family: 'Karla';
-    src: url('../fonts/Karla-SemiBold.ttf');
+    font-weight: 600;
     font-size: medium;
 }
 
@@ -85,7 +107,7 @@ input {
     margin-bottom: 0.7rem;
     text-indent: 0.7rem;
     font-family: 'Karla';
-    src: url('../fonts/Karla-Regular.ttf');
+    font-weight: normal;
     font-size: medium;
 }
 
@@ -94,7 +116,7 @@ input {
     margin-bottom: 0.9rem;
     text-indent: 0.7rem;
     font-family: 'Karla';
-    src: url('../fonts/Karla-Regular.ttf');
+    font-weight: normal;
     font-size: medium;
 }
 
@@ -108,7 +130,7 @@ input:focus {
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
     font-family: 'Karla';
-    src: url('../fonts/Karla-Regular.ttf');
+    font-weight: normal;
 }
 
 hr {
@@ -130,7 +152,7 @@ hr {
     font-weight: 600;
     cursor: pointer;
     font-family: 'Karla';
-    src: url('../fonts/Karla-SemiBold.ttf');
+    font-weight: 600;
     font-size: medium;
 }
 
@@ -149,7 +171,8 @@ hr {
 .continue-as {
     margin-right: 0.3rem;
     font-family: 'Karla';
-    src: url('../fonts/Karla-Regular.ttf');
+    font-family: 'Karla';
+    font-weight: normal;
 }
 
 .guest {
@@ -157,7 +180,7 @@ hr {
     color: #E491A6;
     font-weight: bold;
     font-family: 'Karla';
-    src: url('../fonts/Karla-Bold.ttf');
+    font-weight: 700;
 }
 
 .login-error {
@@ -166,5 +189,5 @@ hr {
     margin-top: -0.1rem;
     font-weight: bold;
     font-family: 'Karla';
-    src: url('../fonts/Karla-Bold.ttf');
+    font-weight: 700;
 }

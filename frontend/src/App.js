@@ -14,7 +14,7 @@ const App = () => {
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/llm-prompt" element={<LLMPromptPage />} />
-              <Route path="llm-results" element={<ResultsPage />} />
+              <Route path="/llm-results" element={<ResultsPage />} />
           </Routes>
       </Router>
   );
