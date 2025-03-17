@@ -27,7 +27,12 @@ const RegisterForm = () => {
             if (response.ok) {
                 setIsError(false);
                 setRegistrationMessage(data.message);
-                navigate('/');
+
+                // This is so they can see the 'registration complete message'
+                setTimeout(() => {
+                    navigate('/');
+                }, "1500");
+
             } else {
                 setIsError(true);
                 setRegistrationMessage(data.message);

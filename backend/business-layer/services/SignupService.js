@@ -21,7 +21,7 @@ class SignupService {
         if (!userId) {
             return { success: false, message: "Could not create account" };
         }
-        return { success: true, message: "Registration Complete"};
+        return { success: true, message: "Successful, redirecting to login"};
     }
 }
 
