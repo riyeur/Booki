@@ -52,7 +52,7 @@ body {
     font-family: 'Karla';
     font-weight: 700;
     color: #3E2622;
-    text-align: center;
+    text-align: left;
 }
 
 .bookmark-list hr {
@@ -68,7 +68,8 @@ body {
 }
 
 .delete-button-container {
-    padding-bottom: 0.65rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.8rem;
 }
 
 .bookmark-card h2 {
@@ -162,6 +163,7 @@ body {
     font-weight: 700;
     font-size: 1.6rem;
     color: #3E2622;
+    margin-bottom: 1rem;
 }
 
 .signout-button-container{
