@@ -24,6 +24,11 @@ class Users {
         });
         
         console.log("Returning from database function");
+        myPromise.then((result) => {
+            console.log("yPromise resolved with:", result);
+        }).catch((error) => {
+            console.error("myPromise rejected with:", error);
+        });
         return myPromise;
     }
     
