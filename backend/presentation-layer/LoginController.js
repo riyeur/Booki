@@ -19,9 +19,12 @@ class LoginController {
                 return response.status(401).json({});
             }
 
+            console.log("Checked for no token");
+
             return response.status(200).json({ token });
 
         } catch (error) {
+            console.error(`Error`);
             return response.status(401).json({});
         }
     }
