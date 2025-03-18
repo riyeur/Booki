@@ -14,16 +14,13 @@ class LoginController {
             const token = await this.loginService.authenticateUser(request.body.username, request.body.password);
 
             if (!token) {
-                response.status(401)
-                return response.json({ message: `Login failed` })
+                return response.status(401).json({});
             }
 
-            response.status(200)
-            return response.json({ message: `Login successful`, token });
+            return response.status(200).json({ token });
 
         } catch (error) {
-            response.status(401);
-            return response.json({ message: `Login failed` });
+            return response.status(401).json({});
         }
     }
 }

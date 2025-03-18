@@ -3,6 +3,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const connection = await mysql.createConnection(process.env.CONNECTION_URL);
+const connection = await mysql.createConnection(process.env.MYSQL_URL);
 
 export default connection;
