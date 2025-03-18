@@ -38,10 +38,12 @@ class LoginService {
     }
 
     getJWTToken(user) {
+
+        console.log("Creating JWT token:", user);
         const token = jwt.sign(
             { userID: user.User_ID, username: user.Username }, process.env.JWT_SECRET, { expiresIn: '1h'}
         );
-
+        onsole.log("JWT created:", token);
         return token;
     }
 }
