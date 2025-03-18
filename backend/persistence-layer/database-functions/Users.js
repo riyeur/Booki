@@ -7,26 +7,16 @@ class Users {
     
     async getUserByUsername(username) {
         try {
-            console.log("Reached database function for user:", username);
             const query = 'SELECT User_ID, Username, User_Password FROM BOOKI_USER WHERE Username = ?';
-    
-            console.log("Executing SQL query:", query, "with param:", username);
     
             const [results] = await this.connection.execute(query, [username]);
     
-            console.log("Query execution complete.");
-    
-            console.log("Database query results:", results);
-    
             if (!results || results.length === 0) {
-                console.log("No user found for username:", username);
                 return null;
             }
-    
-            console.log("User found:", results[0]);
+
             return results[0];
         } catch (error) {
-            console.error("MySQL query error:", error);
             return null;
         }
     }
