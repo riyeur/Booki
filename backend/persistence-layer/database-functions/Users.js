@@ -8,6 +8,7 @@ class Users {
     getUserByUsername(username) {
         // Get all users from the database with the username inputted (should only be one)
         const myPromise = new Promise((resolve, reject) => {
+            console.log("Reached database function");
             const query = 'SELECT User_ID, Username, User_Password FROM BOOKI_USER WHERE Username = ?';
             
             this.connection.query(query, [username], (error, results) => {
@@ -20,6 +21,7 @@ class Users {
             });
         });
         
+        console.log("Returning from database function");
         return myPromise;
     }
     

@@ -12,8 +12,11 @@ class LoginService {
     }
 
     async authenticateUser(username, password) {
+        console.log("Reached service");
         // Get user from the database (calls the persistence layer)
         const bookiUser = await this.users.getUserByUsername(username);
+
+        console.log("Returned service");
 
         if (password != bookiUser.User_Password) {
             return false;
