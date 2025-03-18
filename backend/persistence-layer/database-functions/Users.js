@@ -5,32 +5,32 @@ class Users {
         this.connection = dbConnection;
     }
     
-    getUserByUsername(username) {
-        // Get all users from the database with the username inputted (should only be one)
-        const myPromise = new Promise((resolve, reject) => {
-            console.log("Reached database function");
+    async getUserByUsername(username) {
+        try {
+            console.log("Reached database function for user:", username);
             const query = 'SELECT User_ID, Username, User_Password FROM BOOKI_USER WHERE Username = ?';
-            
-            this.connection.query(query, [username], (error, results) => {
-                if (error) {
-                    console.error("MySQL query error:", error);
-                    reject(error);
-                    return;
-                }
-                
-                console.log("Database query results:", results);
-                resolve(results.length ? results[0] : null);
-            });
-        });
-        
-        console.log("Returning from database function");
-        myPromise.then((result) => {
-            console.log("yPromise resolved with:", result);
-        }).catch((error) => {
-            console.error("myPromise rejected with:", error);
-        });
-        return myPromise;
+    
+            console.log("Executing SQL query:", query, "with param:", username);
+    
+            const [results] = await this.connection.execute(query, [username]);
+    
+            console.log("Query execution complete.");
+    
+            console.log("Database query results:", results);
+    
+            if (!results || results.length === 0) {
+                console.log("No user found for username:", username);
+                return null;
+            }
+    
+            console.log("User found:", results[0]);
+            return results[0];
+        } catch (error) {
+            console.error("MySQL query error:", error);
+            return null;
+        }
     }
+    
     
     createUser(email, username, password) {
         const myPromise = new Promise((resolve, reject) => {
