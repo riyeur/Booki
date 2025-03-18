@@ -15,7 +15,7 @@ class Main {
 
     ExpressCors() {
         this.app.use(express.json());
-        this.app.use(cors({ origin: "https://booki-orcin.vercel.app/" }));
+        this.app.use(cors({ origin: "https://booki-production.up.railway.app/" }));
     }
 
     Routes() {
