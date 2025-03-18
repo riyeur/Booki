@@ -13,10 +13,12 @@ class Users {
             
             this.connection.query(query, [username], (error, results) => {
                 if (error) {
+                    console.error("MySQL query error:", error);
                     reject(error);
                     return;
                 }
                 
+                console.log("Database query results:", results);
                 resolve(results.length ? results[0] : null);
             });
         });
