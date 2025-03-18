@@ -39,6 +39,7 @@ body {
     border-radius: 1.5rem;
     padding-top: 1.45rem;
     padding-bottom: 2.3rem;
+    margin-bottom: 2.3rem;
     box-shadow: 0.5rem 0.5rem #A3586B;
 }
 
@@ -184,6 +185,7 @@ body {
 
 .register-booki-logo {
     display: flex;
+    margin-top: 3rem;
     margin-bottom: 2rem;
     justify-content: center;
     align-items: center;
