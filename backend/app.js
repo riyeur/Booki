@@ -2,6 +2,7 @@ import express from 'express';
 import config from './index.js';
 import loginRoute from './routes/LoginRoute.js';
 import signupRoute from './routes/SignupRoute.js';
+import profileRoute from './routes/ProfileRoute.js';
 import connection from './persistence-layer/connection.js';
 import cors from 'cors';
 
@@ -21,6 +22,7 @@ class Main {
     Routes() {
         this.app.use('/api/user', loginRoute);
         this.app.use('/api/user', signupRoute);
+        this.app.use('/api/user', profileRoute);
     }
 
     Database() {
