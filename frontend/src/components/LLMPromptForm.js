@@ -107,21 +107,6 @@ const LLMPromptForm = () => {
 
             {loading && <p className="loading">Generating recommendations...</p>}
 
-            {/* Display Recommendations */}
-            {recs.length > 0 && (
-                <div className='recommendations'>
-                    <h3>Book Recommendations:</h3>
-                    <ul>
-                        {recs.map((book, index) => (
-                            <li key={index} className="book-item">
-                                <strong>{book.Book}</strong> by {book.Author}
-                                <p><strong>Accessibility:</strong> {book.Accessibility}</p>
-                                <p><strong>Description:</strong> {book.Description}</p>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
         </div>
     );
 }
