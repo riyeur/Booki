@@ -6,21 +6,30 @@ class Bookmarks {
         this.connection = dbConnection;
     }
 
-    getBooksByUserId(userId) {
-        // get all bookmarks from the database based on current user id
-        const myPromise = new Promise( (resolve, reject) => {
-            const query = 'SELECT Book_Name, Author, Accessibility, Description FROM BOOK b INNER JOIN BOOKI_USER u ON b.User_ID=u.User_ID WHERE u.User_ID=?';
-            this.connection.query(query, [userId], (error, results) => {
-                if (error) {
-                    console.log("error in bookmarks.js: ", error);
-                    reject(error);
-                    return;
-                }
-                
-                resolve(results.length ? results : null);
-            });
-        });
-        return myPromise;
+    async getBooksByUserId(userId) {
+        try {
+            // get bookmarks from the database based on current user id
+            const query = 'SELECT Book_ID, Book_Name, Author, Accessibility, Description FROM BOOK WHERE User_ID=?';
+            const [results] = await this.connection.execute(query, [userId]);
+
+            if (!results || results.length === 0) {
+                return null;
+            }
+
+            // format the bookmarks to match the expected structure
+            const formattedBookmarks = results.map(book => ({
+                bookId: book.Book_ID,
+                bookName: book.Book_Name,
+                authorName: book.Author,
+                accessibilityInfo: book.Accessibility,
+                bookDescription: book.Description
+            }));
+
+            return formattedBookmarks;
+        }
+        catch (error){
+            return null;
+        } 
     }
 }
 
