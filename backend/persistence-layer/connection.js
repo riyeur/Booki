@@ -1,11 +1,8 @@
-import mysql from 'mysql';
+import mysql from 'mysql2/promise';
+import dotenv from 'dotenv';
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    port: '3306',
-    user: 'connection',
-    password: 'securepassword',
-    database: 'booki'
-  })
+dotenv.config();
+
+const connection = await mysql.createConnection(process.env.MYSQL_URL);
 
 export default connection;

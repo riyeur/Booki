@@ -32,10 +32,6 @@ body {
     align-items: center;
 }
 
-.signup-page {
-    margin-top: -3rem;
-}
-
 .register-form {
     background-color: white;
     padding-left: 4rem;
@@ -43,6 +39,7 @@ body {
     border-radius: 1.5rem;
     padding-top: 1.45rem;
     padding-bottom: 2.3rem;
+    margin-bottom: 2.3rem;
     box-shadow: 0.5rem 0.5rem #A3586B;
 }
 
@@ -74,7 +71,7 @@ body {
     height: 2.4rem;
     margin-bottom: 0.7rem;
     text-indent: 0.7rem;
-    color: #3E2622;
+    color: #000000;
     font-family: 'Karla';
     font-weight: normal;
     font-size: medium;
@@ -177,8 +174,18 @@ body {
     font-weight: 700;
 }
 
+.registration-success {
+    color: #70ca7e;
+    text-align: center;
+    margin-top: -0.1rem;
+    font-weight: bold;
+    font-family: 'Karla';
+    font-weight: 700;
+}
+
 .register-booki-logo {
     display: flex;
+    margin-top: 1.5rem;
     margin-bottom: 2rem;
     justify-content: center;
     align-items: center;

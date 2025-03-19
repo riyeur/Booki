@@ -5,40 +5,35 @@ class Users {
         this.connection = dbConnection;
     }
     
-    getUserByUsername(username) {
-        // Get all users from the database with the username inputted (should only be one)
-        const myPromise = new Promise((resolve, reject) => {
+    async getUserByUsername(username) {
+        try {
             const query = 'SELECT User_ID, Username, User_Password FROM BOOKI_USER WHERE Username = ?';
-            
-            this.connection.query(query, [username], (error, results) => {
-                if (error) {
-                    reject(error);
-                    return;
-                }
-                
-                resolve(results.length ? results[0] : null);
-            });
-        });
-        
-        return myPromise;
+    
+            const [results] = await this.connection.execute(query, [username]);
+    
+            if (!results || results.length === 0) {
+                return null;
+            }
+
+            return results[0];
+        } catch (error) {
+            return null;
+        }
     }
     
-    createUser(email, username, password) {
-        const myPromise = new Promise((resolve, reject) => {
+    
+    async createUser(email, username, password) {
+        try {
             const query = 'INSERT INTO BOOKI_USER (Username, User_Email, User_Password) VALUES (?, ?, ?)';
-            
-            this.connection.query(query, [username, email, password], (error, results) => {
-                if (error) {
-                    reject(error);
-                    return;
-                }
-                
-                resolve(results.insertId);
-            });
-        });
-        
-        return myPromise;
+
+            const [result] = await this.connection.execute(query, [username, email, password]);
+    
+            return result.insertId;
+        } catch (error) {
+            return null;
+        }
     }
+
 }
 
 // Export an instance of Users with the database connection
