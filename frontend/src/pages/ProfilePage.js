@@ -19,21 +19,28 @@ const ProfilePage = () => {
     useEffect(() => {
         const fetchBookmarks = async () => {
             try {
-                console.log("fetchBookmarks in profile page was called");
                 const token = sessionStorage.getItem('token');
-                console.log("token:", token);
                 const response = await axios.post('http://localhost:5000/api/user/profile',
-                    { token },
-                    { headers: { 'Content-Type': 'application/json' }});
+                    {},
+                    { 
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
                 
-                if(response.data.bookmarks){
-                    setBookmarks(response.data);
+                if(response.data.bookmarks && response.data.bookmarks.length !== 0){
+                    setBookmarks(response.data.bookmarks);
+                    setfetchFailed('');
                 }
-                
+                else {
+                    setBookmarks([]);
+                    setfetchFailed("You don't have any bookmarks yet. Click on the book icon on the top right to start saving some!");
+                }
+
             }
             catch (error){
-                console.log("error in profile page:", error);
-                setfetchFailed("Couldn't Retrieve Bookmarks...")
+                setfetchFailed("Oops! Something went wrong. Please try again later.");
             }
         };
         fetchBookmarks();
@@ -51,8 +58,13 @@ const ProfilePage = () => {
         <div className='profile-page'>
             <BookButton onClick={goToPromptPage}/>
             <WelcomePanel/>
-            {fetchFailed && <p className='fetch-error'>{fetchFailed}</p>}
-            <BookmarkList title = "My Bookmarks" bookmarks={bookmarks} buttonText = "Delete" handleClick={deleteBookmark}/>
+            {fetchFailed && <div className='fetch-error'> 
+                <p className='bookmarks-title'>My Bookmarks</p>
+                <hr/>
+                <p className='bookmarks-message'>{fetchFailed}</p>
+                </div>
+            }
+            {!fetchFailed && <BookmarkList title = "My Bookmarks" bookmarks={bookmarks} buttonText = "Delete" handleClick={deleteBookmark}/>}
         </div>
     );
 };
