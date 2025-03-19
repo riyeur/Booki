@@ -10,24 +10,26 @@ class ProfileController {
 
     async getUserBookmarks(request, response) {
         try {
+            // Extracting the token from the request
+            const authorization_header = request.headers.authorization;
+            const token = authorization_header && authorization_header.split(' ')[1]; // expecting to receive "Bearer <token>"
+
             // Call the business layer (ProfileService)
-            console.log("request: ", request);
-            const bookmarks = await this.profileService.getUserBookmarksById(request.body.token);
+            const bookmarks = await this.profileService.getUserBookmarksById(token);
             
             if (!bookmarks) {
-                // Unauthorized
-                response.status(401)
-                return response.json({ message: `Not Authorized to Access Profile1` })
+                // User doesn't have any bookmarks saved yet
+                response.status(200);
+                return response.json({ message: `No Bookmarks Found` })
             }
 
             // OK
-            response.status(200)
-            return response.json({ message: `Authorized`, bookmarks });
+            response.status(200);
+            return response.json({ message: `Success`, bookmarks });
 
         } catch (error) {
-            console.log("error in the profile controller:", error);
-            response.status(401);
-            return response.json({ message: `Not Authorized to Access Profile2` });
+            response.status(500);
+            return response.json({ message: `Internal Server Error While Fetching Bookmarks` });
         }
     }
         
