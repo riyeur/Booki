@@ -15,7 +15,7 @@ const BookmarkList = ({title, bookmarks, buttonText, handleClick}) => {
                     // key isn't passed to BookmarkCard, its used internally as a unique identifier for 
                     // each card, and ensures that cards are only re-rendered if they have changed
                     <BookmarkCard 
-                    key = {bookmark.id}
+                    key = {bookmark.bookId}
                     bookName = {bookmark.bookName}
                     authorName = {bookmark.authorName}
                     accessibilityInfo = {bookmark.accessibilityInfo}
