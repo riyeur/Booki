@@ -79,25 +79,25 @@ const LLMPromptForm = () => {
             <div className='llm-prompt-form-inputs'>
                 <form className='form-inputs' onSubmit ={handleSubmit}>
                     <div className='first-row'>
-                        <Genre name="genre" onChange={handleChange}></Genre>
+                        <Genre name="genre" value = {formData.genre} onChange={handleChange}></Genre>
                         <NumberOfRecommendations name="numRecommendations" onChange={handleChange} ></NumberOfRecommendations>
                     </div>
                     <div className='second-row'>
-                        <AgeGroup name="ageGroup" onChange={handleChange}></AgeGroup>
+                        <AgeGroup name="ageGroup" value ={formData.ageGroup} onChange={handleChange}></AgeGroup>
                         <Length name="length" onChange={handleChange}></Length>
                     </div>
                     <div className='third-row'>
-                        <Author name="author" onChange={handleChange}></Author>
+                        <Author name="author" value = {formData.author} onChange={handleChange}></Author>
                     </div>
                     <div className='fourth-row'>
-                        <Language name="language" onChange={handleChange}></Language>
+                        <Language name="language" value = {formData.language} onChange={handleChange}></Language>
                         <Accessibility name="accessibility" onChange={handleChange}></Accessibility>
                     </div>
                     <div className='fifth-row'>
-                        <Description name="description" onChange={handleChange}></Description>
+                        <Description name="description" value = {formData.description} onChange={handleChange}></Description>
                     </div>
                     <div className='sixth-row'>
-                        <SimilarBooks name="similarBooks" onChange={handleChange}></SimilarBooks>
+                        <SimilarBooks name="similarBooks" value = {formData.similarBooks} onChange={handleChange}></SimilarBooks>
                     </div>
                     <div className='seventh-row'>
                         <input type='submit' value='Submit' className='submit-button'></input>
