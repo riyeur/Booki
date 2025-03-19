@@ -33,6 +33,30 @@ body {
     align-items: center;
 }
 
+.fetch-error{
+    background-color: white;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    padding-top: 1.3rem;
+    padding-bottom: 2.3rem;
+    border-radius: 1.5rem;
+    margin-bottom: 2.5rem;
+    margin-top: 2.5rem;
+    width: 40rem;
+    box-shadow: 0 0.1rem 0.3rem #A3586B;
+}
+
+.bookmarks-message {
+    color:#8F7C79;
+}
+
+.fetch-error hr {
+    background-color: #8F7C79;
+    height: 0.5px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
 /* Styling for BookmarkList.js */
 .bookmark-list {
     background-color: white;
@@ -43,7 +67,7 @@ body {
     border-radius: 1.5rem;
     margin-bottom: 2.5rem;
     margin-top: 2.5rem;
-    max-width: 40rem;
+    width: 40rem;
     box-shadow: 0 0.1rem 0.3rem #A3586B;
 }
 
