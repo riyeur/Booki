@@ -2,9 +2,15 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import StoreLLMResponse from "../../persistence-layer/database-functions/StoreLLMResponse.js";
 
-export default async function run(formData){
-    const genAI = new GoogleGenerativeAI("AIzaSyA-Qr62dRO5Gv_BhTQHJfgC1_D37FzArdE"); 
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+class LlmPromptService{
+
+    constructor(apiKey){
+        this.genAI = new GoogleGenerativeAI(apiKey);
+        this.model = this.genAI.getGenerativeModel({model: "gemini-2.0-flash"})
+    }
+    
+    
+    async run(formData){
 
     const prompt = `Recommend ${formData.numRecommendations} books based on this information:
     Genre: ${formData.genre}, Age Group:${formData.ageGroup}, Length: ${formData.length}, Author:${formData.author} , Language: ${formData.language}, 
@@ -23,12 +29,12 @@ export default async function run(formData){
     console.log("Genre:", formData.genre);
 
     try {
-        const result = await model.generateContent(prompt);
+        const result = await this.model.generateContent(prompt);
         const textResult = await result.response.text(); 
 
         console.log("Raw LLM Response:", textResult);
 
-        const parsedBooks = parseLLMResponse(textResult);
+        const parsedBooks = this.parseLLMResponse(textResult);
         
         // Store the parsed books in the database
         await StoreLLMResponse.storeBooksInDatabase(parsedBooks);
@@ -47,7 +53,7 @@ export default async function run(formData){
 }
 
 // Parse LLM response into a JSON array
-function parseLLMResponse(response) {
+parseLLMResponse(response) {
     const arrayOfStrings = response.split(';')
         .map(item => item.trim())
         .filter(item => item !== '')
@@ -55,3 +61,7 @@ function parseLLMResponse(response) {
 
     return arrayOfStrings.map(item => JSON.parse(item));
 }
+
+}
+
+export default LlmPromptService;

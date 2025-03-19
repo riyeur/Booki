@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { getBookRecs } from '../services/LlmService.js'
+import { getBookRecs } from './LlmService'
 import Genre from '../components/llm-prompt-form-components/Genre';
 import AgeGroup from '../components/llm-prompt-form-components/AgeGroup';
 import Length from '../components/llm-prompt-form-components/Length';
