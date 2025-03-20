@@ -8,6 +8,7 @@ class ProfileController {
         this.extractToken = this.extractToken.bind(this);
         this.getUserBookmarks = this.getUserBookmarks.bind(this);
         this.getUsername = this.getUsername.bind(this);
+        this.deleteBookmark = this.deleteBookmark.bind(this);
     }
 
     extractToken(request){
@@ -52,6 +53,26 @@ class ProfileController {
 
             // OK
             return response.status(200).json({ username });
+
+        } catch (error) {
+            // Internal Server Error
+            return response.status(500).json({});
+        }
+    }
+
+    async deleteBookmark(request, response) {
+        const bookmarkId = request.params.bookmarkId;
+        try {
+            // Call the business layer (ProfileService)
+            const success = await this.profileService.deleteBookmarkById(bookmarkId);
+            
+            if (!success) {
+                // Bookmark not found
+                return response.status(404).json({});
+            }
+
+            // OK
+            return response.status(200).json({});
 
         } catch (error) {
             // Internal Server Error
