@@ -1,6 +1,6 @@
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import StoreLLMResponse from "../../persistence-layer/database-functions/StoreLLMResponse.js";
+import StoreLLMResponse from "../../persistence-layer/database-functions/storeLLMResponse.js";
 
 class LlmPromptService{
 
