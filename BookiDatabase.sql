@@ -36,7 +36,8 @@ CREATE TABLE BOOK (
     FOREIGN KEY (User_ID) REFERENCES BOOKI_USER(User_ID),
     Book_Name VARCHAR(100),
     Author VARCHAR(100),
-    Accessibility VARCHAR(50)
+    Accessibility VARCHAR(50),
+    Book_Description VARCHAR(700)
 );
 
 -- This user is needed for the database connection to the backend
