@@ -5,31 +5,57 @@ class ProfileController {
 
     constructor(profileService) {
         this.profileService = profileService;
+        this.extractToken = this.extractToken.bind(this);
         this.getUserBookmarks = this.getUserBookmarks.bind(this);
+        this.getUsername = this.getUsername.bind(this);
+    }
+
+    extractToken(request){
+        // Extracting the token from the request
+        const authorization_header = request.headers.authorization;
+        const token = authorization_header && authorization_header.split(' ')[1]; // expecting to receive "Bearer <token>"
+        return token;
     }
 
     async getUserBookmarks(request, response) {
         try {
-            // Extracting the token from the request
-            const authorization_header = request.headers.authorization;
-            const token = authorization_header && authorization_header.split(' ')[1]; // expecting to receive "Bearer <token>"
+            const token = this.extractToken(request);
 
             // Call the business layer (ProfileService)
             const bookmarks = await this.profileService.getUserBookmarksById(token);
             
             if (!bookmarks) {
                 // User doesn't have any bookmarks saved yet
-                response.status(200);
-                return response.json({ message: `No Bookmarks Found` })
+                return response.status(200).json({});
             }
 
             // OK
-            response.status(200);
-            return response.json({ message: `Success`, bookmarks });
+            return response.status(200).json({ bookmarks });
 
         } catch (error) {
-            response.status(500);
-            return response.json({ message: `Internal Server Error While Fetching Bookmarks` });
+            // Internal Server Error
+            return response.status(500).json({});
+        }
+    }
+
+    async getUsername(request, response) {
+        try {
+            const token = this.extractToken(request);
+
+            // Call the business layer (ProfileService)
+            const username = await this.profileService.getUsernameById(token);
+            
+            if (!username) {
+                // Unauthorized
+                return response.status(401).json({});
+            }
+
+            // OK
+            return response.status(200).json({ username });
+
+        } catch (error) {
+            // Internal Server Error
+            return response.status(500).json({});
         }
     }
         
