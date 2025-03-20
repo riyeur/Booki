@@ -2,7 +2,7 @@
 
 export async function getBookRecs(formData){
     try {
-        const response = await fetch("http://localhost:5000/api/llm/generate-books", {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/llm/generate-books`, {
 
             method: "POST",
             headers: {
@@ -12,15 +12,13 @@ export async function getBookRecs(formData){
 
         });
 
-        if(!response.ok){
-            throw new Error(`HTTP Error! Status: ${response.status}`);
+        if (!response.ok) {
+            console.error(`HTTP Error! Status: ${response.status}`);
         };
 
         return await response.json();
 
-       
-        
-    } catch(error) {
+    } catch (error) {
         console.error("Error getting book recommendations:",error);
         return[];
     }
