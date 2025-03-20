@@ -20,8 +20,7 @@ class LlmPromptService{
     "information about if the book is available as a physical copy, digital, audiobook, 
     braille, etc", "Description": "description of book"}'). 
     
-    Only provide the JSON-formatted 
-    string, do not include anything else in your response. Each string should be separated 
+    Only provide the strings, do not include anything else in your response. Each string should be separated 
     by a single semicolon, nothing else. Do not include any explanations, or additional text. Just return the string
     that appears to be formatted as JSON. To clarify, do not return an actual JSON array. ONLY return strings in the specified format.`;
 
@@ -37,14 +36,19 @@ class LlmPromptService{
         const parsedBooks = this.parseLLMResponse(textResult);
         
         // Store the parsed books in the database
-        await StoreLLMResponse.storeBooksInDatabase(parsedBooks);
+        StoreLLMResponse.storeBooksInDatabase(parsedBooks);
 
 
         // FOR DEBUGGING ONLY
         // Retrieve the stored books from database; test to check StoreLLMResponse.js
-        const storedBooks = await StoreLLMResponse.getStoredBooks();
-        console.log("Stored Books in Database:", storedBooks);
-
+        StoreLLMResponse.getStoredBooks((err, storedBooks) => {
+            if (err) {
+                console.error('Error retrieving stored books:', err);
+            } else {
+                console.log('Stored Books in Database:', storedBooks);
+            }
+        });
+        
         return parsedBooks;
     } catch (error) {
         console.error("Error generating response!:", error);
