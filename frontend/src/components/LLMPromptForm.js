@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import { getBookRecs } from './LlmService'
 import Genre from '../components/llm-prompt-form-components/Genre';
 import AgeGroup from '../components/llm-prompt-form-components/AgeGroup';
@@ -12,8 +13,7 @@ import NumberOfRecommendations from '../components/llm-prompt-form-components/Nu
 import '../styles/LLMPromptPageStyles.css'
 
 const LLMPromptForm = () => {
-
-     // add usestate to track user data from prompt form
+    const navigate = useNavigate();
      const [formData, setFormData] = useState ({
         genre: "",
         ageGroup: "",
@@ -27,50 +27,42 @@ const LLMPromptForm = () => {
 
     });
 
-    //track AI response (mainly for UI) ** NOT IMPLEMENTED YET
     const [loading, setLoading] = useState(false);
-    const [recs, setRecs] = useState([]);
+    const [error, setError] = useState('');
 
-    //handle input changes
     const handleChange = (e) =>{
-        
         const{name, value} = e.target;
-        console.error(`DEBUG DEBUG DEBUG updating ${name} to ${value}`);//debug
-
         setFormData((prevData) => ({
             ...prevData,
-            [name]: value // changes the specific element that was changed by the user
+            [name]: value
         }));
-        
     };
 
-
-    //submit button action
     const handleSubmit = async (e) => {
-
-        e.preventDefault(); // prevent page loading/resetting
-
-        console.log("final formData:", formData);
+        e.preventDefault();
         setLoading(true);
-        setRecs([]);
 
-        try{
+        try {
             console.log("Sending request with formData:", formData);
             const results = await getBookRecs(formData);
             console.log("LLM response:", results);
-        } catch(error){
-            console.log("Error retrieving data :/, error:", error);
+
+            if (results.length > 0) {
+                const bookIDsURL = results.join(',');
+                navigate(`/llm-results?books=${bookIDsURL}`);
+            } else {
+                setError("An error occurred while generating recommendations. Please try again.");
+            }
+
+        } catch (error) {
+            console.log("Error retrieving data:", error);
+            setError("An error occurred while generating recommendations. Please try again.");
         }
 
         setLoading(false);
-
-        console.log(loading);
-
     };
 
     return (
-
-        
         <div className='llm-prompt-form'>
             <div className='question'>
                 <h4 className='what-kind-of-book'>What kind of book would you like to read?</h4>
@@ -104,9 +96,8 @@ const LLMPromptForm = () => {
                     </div>
                 </form>
             </div>
-
             {loading && <p className="loading">Generating recommendations...</p>}
-
+            {error && <p className="error-message">{error}</p>}
         </div>
     );
 }

@@ -1,8 +1,8 @@
 //function that sends a post request to the backend (from the frontend)
 
 export async function getBookRecs(formData){
-    try{
-        const response = await fetch("http://localhost:3000/api/llm/generate-books", {
+    try {
+        const response = await fetch("http://localhost:5000/api/llm/generate-books", {
 
             method: "POST",
             headers: {
@@ -20,9 +20,9 @@ export async function getBookRecs(formData){
 
        
         
-    }catch(error){
+    } catch(error) {
         console.error("Error getting book recommendations:",error);
         return[];
-       }
+    }
 
 }

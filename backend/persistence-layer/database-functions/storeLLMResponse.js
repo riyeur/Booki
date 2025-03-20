@@ -10,57 +10,38 @@ class StoreLLMResponse {
     
     // Accepts parsedBooks as an argument
     async storeBooksInDatabase(parsedBooks) {
-        let index = 0; // Track inserted books
-    
-        const insertNextBook = () => {
-            if (index >= parsedBooks.length) {
-                console.log("All books inserted successfully.");
-                return;
+        try {
+            let insertedBookIds = [];
+
+            for (const book of parsedBooks) {
+                const bookID = await this.storeResponse(book);
+                insertedBookIds.push(bookID);
             }
-    
-            const book = parsedBooks[index];
-            this.storeResponse(book, (error) => {
-                if (error) {
-                    console.error("Error inserting book:", error);
-                    return;
-                }
-    
-                index++; // Move to the next book
-                insertNextBook(); // Recursively call to insert next book
-            });
-        };
-    
-        insertNextBook(); // Start inserting books
+            console.log("All books have been inserted into the database with UserID = null.");
+
+            return insertedBookIds;
+        } catch (error) {
+            console.error("Error inserting books:", error);
+            return [];
+        }
     }
     
 
     // Insert book data into the database
     storeResponse(data, callback) {
-        const query = 'INSERT INTO BOOK (Book_Name, Author, Accessibility, Book_Description) VALUES (?, ?, ?, ?)';
-    
-        this.connection.query(query, [data.Book, data.Author, data.Accessibility, data.Description], (error, results) => {
-            if (error) {
-                return callback(error);
-            }
-            console.log(`Book ${data.Book} inserted successfully.`);
-            callback(null);
+        return new Promise((resolve, reject) => {
+            const query = 'INSERT INTO BOOK (Book_Name, Author, Accessibility, Description) VALUES (?, ?, ?, ?)';
+
+            this.connection.query(query, [data.Book, data.Author, data.Accessibility, data.Description], (error, results) => {
+                if (error) {
+                    reject(error);
+                    return;
+                }
+                console.log(`Book "${data.Book}" inserted successfully.`);
+                resolve(results.insertId);
+            });
         });
     }
-    
-
-    // FOR DEBUGGING ONLY
-    // Retrieve all books from the database
-    getStoredBooks(callback) {
-        const query = 'SELECT * FROM BOOK';
-    
-        this.connection.query(query, (error, results) => {
-            if (error) {
-                return callback(error, null);
-            }
-            callback(null, results);
-        });
-    }
-
 
 }
 
