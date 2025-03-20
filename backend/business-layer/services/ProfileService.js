@@ -6,8 +6,10 @@ class ProfileService {
     constructor(bookmarks, users) {
         this.bookmarks = bookmarks;
         this.users = users;
+        this.extractUserId = this.extractUserId.bind(this);
         this.getUserBookmarksById = this.getUserBookmarksById.bind(this);
         this.getUsernameById = this.getUsernameById.bind(this);
+        this.deleteBookmarkById = this.deleteBookmarkById.bind(this);
     }
 
     extractUserId(token){
@@ -49,6 +51,17 @@ class ProfileService {
         }
         catch (error){
             return null;
+        }
+    }
+
+    async deleteBookmarkById(bookmarkId) {
+        try{
+            // delete the requested bookmark using the sql querry in the persistence layer
+            const success = await this.bookmarks.deleteBookmarkByBookId(bookmarkId);
+            return success;
+        }
+        catch (error){
+            return false;
         }
     }
 }
