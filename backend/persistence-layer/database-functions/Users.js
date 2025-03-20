@@ -34,6 +34,21 @@ class Users {
         }
     }
 
+    async getUsernameByUserId(userId) {
+        try {
+            const query = 'SELECT Username FROM BOOKI_USER WHERE User_ID = ?';
+    
+            const [results] = await this.connection.execute(query, [userId]);
+    
+            if (!results || results.length === 0) {
+                return null;
+            }
+            return results[0].Username;
+        } catch (error) {
+            return null;
+        }
+    }
+
 }
 
 // Export an instance of Users with the database connection
