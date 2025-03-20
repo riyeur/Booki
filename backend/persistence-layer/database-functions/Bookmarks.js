@@ -31,6 +31,24 @@ class Bookmarks {
             return null;
         } 
     }
+
+    async deleteBookmarkByBookId(bookId) {
+        try {
+            // delete bookmark from database based on book id
+            const query = 'DELETE FROM BOOK WHERE Book_ID=?';
+            const [result] = await this.connection.execute(query, [bookId]);
+
+            if (result.affectedRows > 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        catch (error){
+            return false;
+        }
+    }
 }
 
 export default new Bookmarks(connection);
