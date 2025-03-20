@@ -12,11 +12,17 @@ class SignupController {
         try {
             const { email, username, password } = request.body;
 
+            console.log(`(SignupController) Checking to see if email, username and password are filled out`);
+
             if (!email || !username || !password) {
                 return response.status(400).json({ message: 'All fields are required' });
             }
+
+            console.log(`(SignupController) Calling SignupService to register the user`);
             
             const result = await this.signupService.registerUser(email, username, password);
+
+            console.log(`(SignupController) Returned from LoginService with userID`);
             
             if (!result.success) {
                 return response.status(400).json({ message: result.message });

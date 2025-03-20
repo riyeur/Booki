@@ -8,6 +8,7 @@ import cors from 'cors';
 class Main {
     constructor() {
         this.app = express();
+        this.connection = connection;
         this.ExpressCors();
         this.Routes();
         this.Database();
@@ -28,8 +29,13 @@ class Main {
     }
 
     Database() {
-        connection.connect();
-        console.log('Connected to database.');
+        this.connection.getConnection().then(connect => {
+            console.log('Connected to database.');
+            connect.release();
+        })
+        .catch(error => {
+            console.log('Database connection failed:', error);
+        });
     }
 
     start(port) {
