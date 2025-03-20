@@ -11,7 +11,6 @@ import axios from 'axios';
 const ProfilePage = () => {
     const navigate = useNavigate();
 
-    // This will help keep track of the state of the bookmarks
     const [bookmarks, setBookmarks] = useState([]);
     const [Username, setUsername] = useState('');
     const [fetchFailed, setfetchFailed] = useState('');
@@ -80,8 +79,14 @@ const ProfilePage = () => {
         navigate('/llm-prompt');
       };
     
-    const deleteBookmark = () => {
-        // add functionality to delete bookmark here
+    const deleteBookmark = async (bookId) => {
+        try {
+            await axios.delete(`http://localhost:5000/api/user/bookmarks/${bookId}`);
+            setBookmarks( (prevBookmarks) => prevBookmarks.filter( (bookmark) => bookmark.bookId !== bookId));
+        }
+        catch (error){
+            // don't delete the bookmark if error
+        }
     };
 
     return(
