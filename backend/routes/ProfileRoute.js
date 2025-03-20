@@ -4,6 +4,7 @@ import ProfileController from '../presentation-layer/ProfileController.js';
 const router = Router();
 
 // The route sends the request to controller
-router.post('/profile', ProfileController.getUserBookmarks);
+router.post('/bookmarks', ProfileController.getUserBookmarks);
+router.post('/username', ProfileController.getUsername);
 
 export default router;
