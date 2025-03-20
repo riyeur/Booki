@@ -13,14 +13,15 @@ const ProfilePage = () => {
 
     // This will help keep track of the state of the bookmarks
     const [bookmarks, setBookmarks] = useState([]);
+    const [Username, setUsername] = useState('');
     const [fetchFailed, setfetchFailed] = useState('');
 
-    // This will run once (when the component is mounted) and will fetch the bookmark data from the database
+    // This will run everytime the bookmarks variable changes and will fetch the bookmarks from the database
     useEffect(() => {
         const fetchBookmarks = async () => {
             try {
                 const token = sessionStorage.getItem('token');
-                const response = await axios.post('http://localhost:5000/api/user/profile',
+                const response = await axios.post('http://localhost:5000/api/user/bookmarks',
                     {},
                     { 
                         headers: { 
@@ -44,6 +45,35 @@ const ProfilePage = () => {
             }
         };
         fetchBookmarks();
+    }, [bookmarks]);
+
+    // This will run once (when the component is mounted) and will fetch the username from the database
+    useEffect(() => {
+        const fetchUsername = async () => {
+            try {
+                const token = sessionStorage.getItem('token');
+                const response = await axios.post('http://localhost:5000/api/user/username',
+                    {},
+                    { 
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+                
+                if(response.data.username){
+                    setUsername(response.data.username);
+                }
+                else {
+                    setUsername("Booki User");
+                }
+
+            }
+            catch (error){
+                setUsername("Booki User");
+            }
+        };
+        fetchUsername();
     }, []);
 
     const goToPromptPage = () => {
@@ -57,7 +87,7 @@ const ProfilePage = () => {
     return(
         <div className='profile-page'>
             <BookButton onClick={goToPromptPage}/>
-            <WelcomePanel/>
+            <WelcomePanel username={Username}/>
             {fetchFailed && <div className='fetch-error'> 
                 <p className='bookmarks-title'>My Bookmarks</p>
                 <hr/>
