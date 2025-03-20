@@ -10,45 +10,54 @@ class StoreLLMResponse {
     
     // Accepts parsedBooks as an argument
     async storeBooksInDatabase(parsedBooks) {
-        try {
-            // Insert each book into the database
-            for (const book of parsedBooks) {
-                await this.storeResponse(book);
+        let index = 0; // Track inserted books
+    
+        const insertNextBook = () => {
+            if (index >= parsedBooks.length) {
+                console.log("All books inserted successfully.");
+                return;
             }
-        } catch (error) {
-            console.error("Error in storing generated books:", error);
-        }
-    }
-
-    // Insert book data into the database
-    async storeResponse(data) {
-        const query = 'INSERT INTO BOOK (Book_Name, Author, Accessibility) VALUES (?, ?, ?)';
-
-        return new Promise((resolve, reject) => {
-            this.connection.query(query, [data.Book, data.Author, data.Accessibility], (error, results) => {
+    
+            const book = parsedBooks[index];
+            this.storeResponse(book, (error) => {
                 if (error) {
-                    reject(error);
+                    console.error("Error inserting book:", error);
                     return;
                 }
-                console.log(`Book ${data.Book} inserted successfully.`);
-                resolve();
+    
+                index++; // Move to the next book
+                insertNextBook(); // Recursively call to insert next book
             });
+        };
+    
+        insertNextBook(); // Start inserting books
+    }
+    
+
+    // Insert book data into the database
+    storeResponse(data, callback) {
+        const query = 'INSERT INTO BOOK (Book_Name, Author, Accessibility, Book_Description) VALUES (?, ?, ?, ?)';
+    
+        this.connection.query(query, [data.Book, data.Author, data.Accessibility, data.Description], (error, results) => {
+            if (error) {
+                return callback(error);
+            }
+            console.log(`Book ${data.Book} inserted successfully.`);
+            callback(null);
         });
     }
+    
 
     // FOR DEBUGGING ONLY
     // Retrieve all books from the database
-    async getStoredBooks() {
+    getStoredBooks(callback) {
         const query = 'SELECT * FROM BOOK';
-
-        return new Promise((resolve, reject) => {
-            this.connection.query(query, (error, results) => {
-                if (error) {
-                    reject(error);
-                    return;
-                }
-                resolve(results);
-            });
+    
+        this.connection.query(query, (error, results) => {
+            if (error) {
+                return callback(error, null);
+            }
+            callback(null, results);
         });
     }
 
