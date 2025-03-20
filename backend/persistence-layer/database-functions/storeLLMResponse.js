@@ -28,21 +28,17 @@ class StoreLLMResponse {
     
 
     // Insert book data into the database
-    storeResponse(data, callback) {
-        return new Promise((resolve, reject) => {
-            const query = 'INSERT INTO BOOK (Book_Name, Author, Accessibility, Description) VALUES (?, ?, ?, ?)';
+    async storeResponse(data) {
+        const query = 'INSERT INTO BOOK (Book_Name, Author, Accessibility, Description) VALUES (?, ?, ?, ?)';
 
-            this.connection.query(query, [data.Book, data.Author, data.Accessibility, data.Description], (error, results) => {
-                if (error) {
-                    reject(error);
-                    return;
-                }
-                console.log(`Book "${data.Book}" inserted successfully.`);
-                resolve(results.insertId);
-            });
-        });
+        try {
+            const [results] = await this.connection.execute(query, [data.Book, data.Author, data.Accessibility, data.Description]);
+            console.log(`Book "${data.Book}" inserted successfully.`);
+            return results.insertId;
+        } catch (error) {
+            console.error(`Error inserting book "${data.Book}":`, error);
+        }
     }
-
 }
 
 export default new StoreLLMResponse(connection);
