@@ -6,7 +6,7 @@ const BookButton = ({onClick}) => {
     return (
         <div className='book-button-container'>
             <button className='book-button' onClick={onClick}>
-                <img src="/booki_book_dark.png" alt="LLM Button" />
+                <img src="/booki_book_dark.png" alt="LLM Button" height='80' width='auto'/>
             </button>
         </div>
         

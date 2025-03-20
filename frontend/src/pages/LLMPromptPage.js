@@ -7,19 +7,13 @@ const LLMPromptPage = () => {
     const navigate = useNavigate();
 
     const redirectUserProfile = () => {
-        const token = sessionStorage.getItem('token');
-
-        if (token) {
-            navigate('/profile');
-        } else {
-            navigate('/');
-        }
+        navigate('/profile');
     }
 
     return (
         <div className='llm-prompt-page'>
             <div className='profile' onClick={redirectUserProfile}>
-                <img className='profile-logo' src='/profile.png' alt='Profile pic' height='45' width='auto'/>
+                <img className='profile-logo' src='/profile.png' alt='Profile pic' height='60' width='auto'/>
             </div>
             <LLMPromptForm></LLMPromptForm>
         </div>

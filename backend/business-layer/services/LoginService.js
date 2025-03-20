@@ -12,8 +12,16 @@ class LoginService {
     }
 
     async authenticateUser(username, password) {
-        // Get users from the database (calls the persistence layer)
+        console.log(`(LoginService) Authenticating user`);
+
+        // Get user from the database (calls the persistence layer)
         const bookiUser = await this.users.getUserByUsername(username);
+
+        console.log(`(LoginService) Authenticated user: `, bookiUser);
+
+        if (!bookiUser) {
+            return false;
+        }
 
         if (password != bookiUser.User_Password) {
             return false;
@@ -22,10 +30,17 @@ class LoginService {
         // Get the JWT token
         const token = this.getJWTToken(bookiUser);
 
+        console.log(`(LoginService) Returning the token`);
+
         return token;
     }
 
     getJWTToken(user) {
+
+        if (!process.env.JWT_SECRET) {
+            console.log("Missing JWT_SECRET environment variable");
+        }
+
         const token = jwt.sign(
             { userID: user.User_ID, username: user.Username }, process.env.JWT_SECRET, { expiresIn: '1h'}
         );

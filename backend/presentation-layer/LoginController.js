@@ -10,20 +10,23 @@ class LoginController {
 
     async loginUser(request, response) {
         try {
-            // Call the business layer (LoginService)
+            
+            console.log(`(LoginController) Calling LoginService to authenticate the user`);
+
             const token = await this.loginService.authenticateUser(request.body.username, request.body.password);
 
+            console.log(`(LoginController) Returned from LoginService with token/no token`);
+
             if (!token) {
-                response.status(401)
-                return response.json({ message: `Login failed` })
+                return response.status(401).json({});
             }
 
-            response.status(200)
-            return response.json({ message: `Login successful`, token });
+            console.log(`(LoginController) Returning with token`);
+
+            return response.status(200).json({ token });
 
         } catch (error) {
-            response.status(401);
-            return response.json({ message: `Login failed` });
+            return response.status(401).json({});
         }
     }
 }
