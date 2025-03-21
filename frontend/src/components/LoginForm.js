@@ -12,11 +12,14 @@ const LoginForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log(`Sending request to login`);
         try {
                 const response = await axios.post('http://localhost:5000/api/user/login',
                 { username, password },
                 { headers: { 'Content-Type': 'application/json' }}
             );
+
+            console.log(`Recieved response to request to login`);
 
             if (response.data.token) {
                 sessionStorage.setItem('token', response.data.token);

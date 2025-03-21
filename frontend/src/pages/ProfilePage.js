@@ -20,7 +20,7 @@ const ProfilePage = () => {
         const fetchBookmarks = async () => {
             try {
                 const token = sessionStorage.getItem('token');
-                const response = await axios.post('http://localhost:5000/api/user/bookmarks',
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/bookmarks`,
                     {},
                     { 
                         headers: { 
@@ -51,7 +51,7 @@ const ProfilePage = () => {
         const fetchUsername = async () => {
             try {
                 const token = sessionStorage.getItem('token');
-                const response = await axios.post('http://localhost:5000/api/user/username',
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/username`,
                     {},
                     { 
                         headers: { 
@@ -81,7 +81,7 @@ const ProfilePage = () => {
     
     const deleteBookmark = async (bookId) => {
         try {
-            await axios.delete(`http://localhost:5000/api/user/bookmarks/${bookId}`);
+            await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/user/bookmarks/${bookId}`);
             setBookmarks( (prevBookmarks) => prevBookmarks.filter( (bookmark) => bookmark.bookId !== bookId));
         }
         catch (error){

@@ -9,14 +9,17 @@ class Users {
         try {
             const query = 'SELECT User_ID, Username, User_Password FROM BOOKI_USER WHERE Username = ?';
     
-            const [results] = await this.connection.execute(query, [username]);
+            const [users] = await this.connection.execute(query, [username]);
+
+            console.log(`User:`, users);
     
-            if (!results || results.length === 0) {
+            if (!users) {
                 return null;
             }
 
-            return results[0];
+            return users[0];
         } catch (error) {
+            console.log(`Error: Could not retrieve user.`)
             return null;
         }
     }
@@ -27,9 +30,12 @@ class Users {
             const query = 'INSERT INTO BOOKI_USER (Username, User_Email, User_Password) VALUES (?, ?, ?)';
 
             const [result] = await this.connection.execute(query, [username, email, password]);
+
+            console.log(`User created with the ID:`, result.insertId);
     
             return result.insertId;
         } catch (error) {
+            console.log("Error creating user:", error);
             return null;
         }
     }
