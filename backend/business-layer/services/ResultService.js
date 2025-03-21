@@ -42,4 +42,4 @@ class ResultService {
     }
 }
 
-export default new ResultService(Results);
+export default ResultService;

@@ -5,7 +5,6 @@ import cors from 'cors';
 
 /* CHANGE THIS */
 import profileRoute from './routes/ProfileRoute.js';
-import resultRoute from './routes/ResultRoute.js';
 
 /* LOGIN */
 import createLoginRoute from './routes/LoginRoute.js';
@@ -24,6 +23,12 @@ import createLLMRoute from './routes/LLMRoutes.js';
 import LLMController from './presentation-layer/LLMController.js';
 import LlmPromptService from './business-layer/services/LlmPromptService.js';
 import StoreLLMResponse from './persistence-layer/database-functions/storeLLMResponse.js';
+
+/* RESULT */
+import createResultRoute from './routes/ResultRoute.js';
+import ResultController from './presentation-layer/ResultController.js';
+import ResultService from './business-layer/services/ResultService.js';
+import Results from './persistence-layer/database-functions/Results.js';
 
 class Main {
     constructor() {
@@ -46,12 +51,13 @@ class Main {
         this.app.use('/api/user', createSignupRoute(this.signupController));
         this.app.use('/api/user', profileRoute);
         this.app.use('/api/llm', createLLMRoute(this.llmController));
-        this.app.use('/api/book', resultRoute);
+        this.app.use('/api/book', createResultRoute(this.resultController));
     }
 
     Instantiate() {
         this.users = Users;
         this.llm = StoreLLMResponse;
+        this.results = Results;
 
         /* LOGIN */
         this.tokenService = new TokenService(process.env.JWT_SECRET);
@@ -65,6 +71,10 @@ class Main {
         /* LLM */
         this.llmService = new LlmPromptService(process.env.apiKey, this.llm);
         this.llmController = new LLMController(this.llmService);
+
+        /* RESULT */
+        this.resultService = new ResultService(this.results);
+        this.resultController = new ResultController(this.resultService);
     }
 
     Database() {
@@ -77,7 +87,7 @@ class Main {
         });
     }
 
-    // Backend was failing after inactivity => send ping so that it does not stop
+    // Backend was failing after inactivity => send ping to this route so that it does not stop
     makeBackendNotSleep() {
         this.app.get('/ping', (request, response) => {
             response.send('Backend is active');
