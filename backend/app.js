@@ -17,7 +17,7 @@ class Main {
     ExpressCors() {
         this.app.use(express.json());
         this.app.use(cors({
-            origin: "https://booki-production.up.railway.app",
+            origin: ["http://localhost:3000", "https://booki-production.up.railway.app"],  // Allow both local and deployed frontend
             methods: "GET,POST,PUT,DELETE", 
             allowedHeaders: "Content-Type,Authorization"
         }));
