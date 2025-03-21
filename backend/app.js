@@ -1,12 +1,24 @@
 import express from 'express';
 import config from './index.js';
-import loginRoute from './routes/LoginRoute.js';
-import signupRoute from './routes/signupRoute.js';
+import connection from './persistence-layer/connection.js';
+import cors from 'cors';
+
+/* CHANGE THIS */
 import profileRoute from './routes/ProfileRoute.js';
 import llmRoute from './routes/LLMRoutes.js';
 import resultRoute from './routes/ResultRoute.js';
-import connection from './persistence-layer/connection.js';
-import cors from 'cors';
+
+/* LOGIN */
+import createLoginRoute from './routes/LoginRoute.js';
+import LoginController from './presentation-layer/LoginController.js';
+import TokenService from './business-layer/services/TokenService.js';
+import LoginService from './business-layer/services/LoginService.js';
+import Users from './persistence-layer/database-functions/Users.js';
+
+/* SIGNUP */
+import createSignupRoute from './routes/signupRoute.js';
+import SignupController from './presentation-layer/SignupController.js';
+import SignupService from './business-layer/services/SignupService.js';
 
 class Main {
     constructor() {
@@ -14,25 +26,34 @@ class Main {
         this.connection = connection;
         this.ExpressCors();
         this.makeBackendNotSleep();
+        this.Instantiate();
         this.Routes();
         this.Database();
     }
 
     ExpressCors() {
         this.app.use(express.json());
-        this.app.use(cors({
-            origin: "https://booki-production.up.railway.app",
-            methods: "GET,POST,PUT,DELETE", 
-            allowedHeaders: "Content-Type,Authorization"
-        }));
+        this.app.use(cors());
     }
 
     Routes() {
-        this.app.use('/api/user', loginRoute);
-        this.app.use('/api/user', signupRoute);
+        this.app.use('/api/user', createLoginRoute(this.loginController));
+        this.app.use('/api/user', createSignupRoute(this.signupController));
         this.app.use('/api/user', profileRoute);
         this.app.use('/api/llm', llmRoute);
         this.app.use('/api/book', resultRoute);
+    }
+
+    Instantiate() {
+        /* LOGIN */
+        this.users = Users;
+        this.tokenService = new TokenService(process.env.JWT_SECRET);
+        this.loginService = new LoginService(this.users, this.tokenService);
+        this.loginController = new LoginController(this.loginService);
+
+        /* SIGN UP */
+        this.signupService = new SignupService(this.users);
+        this.signupController = new SignupController(this.signupService);
     }
 
     Database() {

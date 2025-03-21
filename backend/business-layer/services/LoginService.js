@@ -1,13 +1,12 @@
-import Users from '../../persistence-layer/database-functions/Users.js';
-import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 class LoginService {
 
-    constructor(users) {
+    constructor(users, token) {
         this.users = users;
+        this.token = token;
         this.authenticateUser = this.authenticateUser.bind(this);
     }
 
@@ -28,25 +27,12 @@ class LoginService {
         }
 
         // Get the JWT token
-        const token = this.getJWTToken(bookiUser);
+        const token = this.token.getJWT({userID: bookiUser.User_ID, username: bookiUser.Username});
 
         console.log(`(LoginService) Returning the token`);
 
         return token;
     }
-
-    getJWTToken(user) {
-
-        if (!process.env.JWT_SECRET) {
-            console.log("Missing JWT_SECRET environment variable");
-        }
-
-        const token = jwt.sign(
-            { userID: user.User_ID, username: user.Username }, process.env.JWT_SECRET, { expiresIn: '1h'}
-        );
-
-        return token;
-    }
 }
 
-export default new LoginService(Users);
+export default LoginService;
