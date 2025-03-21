@@ -16,8 +16,8 @@ class LlmPromptService{
         Accessibility: ${formData.accessibility}, Description: ${formData.description}, Similar Books: ${formData.similarBooks}. For each book, 
         provide the information as a string that can be converted to JSON format 
         (i.e. '{"Book":"name of the book", "Author":"name of author", "Accessibility":
-        "information about if the book is available as a physical copy, E-book, audiobook, 
-        braille, etc", "Description": "description of book(please do 2-5 lines for the description explaining what the book is about)"}'). 
+        "information about if the book is available as a Physical book, E-book, Audiobook, 
+        Braille, etc", "Description": "description of book(please do 2-5 lines for the description explaining what the book is about)"}'). 
         
         Only provide the strings, do not include anything else in your response. Each string should be separated 
         by a single semicolon, nothing else. Do not include any explanations, or additional text. Just return the string
