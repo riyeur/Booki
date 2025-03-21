@@ -3,9 +3,6 @@ import config from './index.js';
 import connection from './persistence-layer/connection.js';
 import cors from 'cors';
 
-/* CHANGE THIS */
-import profileRoute from './routes/ProfileRoute.js';
-
 /* LOGIN */
 import createLoginRoute from './routes/LoginRoute.js';
 import LoginController from './presentation-layer/LoginController.js';
@@ -30,6 +27,12 @@ import ResultController from './presentation-layer/ResultController.js';
 import ResultService from './business-layer/services/ResultService.js';
 import Results from './persistence-layer/database-functions/Results.js';
 
+/* PROFILE */
+import createProfileRoute from './routes/ProfileRoute.js';
+import ProfileController from './presentation-layer/ProfileController.js';
+import ProfileService from './business-layer/services/ProfileService.js';
+import Bookmarks from './persistence-layer/database-functions/Bookmarks.js';
+
 class Main {
     constructor() {
         this.app = express();
@@ -49,7 +52,7 @@ class Main {
     Routes() {
         this.app.use('/api/user', createLoginRoute(this.loginController));
         this.app.use('/api/user', createSignupRoute(this.signupController));
-        this.app.use('/api/user', profileRoute);
+        this.app.use('/api/user', createProfileRoute(this.profileController));
         this.app.use('/api/llm', createLLMRoute(this.llmController));
         this.app.use('/api/book', createResultRoute(this.resultController));
     }
@@ -58,6 +61,7 @@ class Main {
         this.users = Users;
         this.llm = StoreLLMResponse;
         this.results = Results;
+        this.bookmarks = Bookmarks;
 
         /* LOGIN */
         this.tokenService = new TokenService(process.env.JWT_SECRET);
@@ -75,6 +79,10 @@ class Main {
         /* RESULT */
         this.resultService = new ResultService(this.results);
         this.resultController = new ResultController(this.resultService);
+
+        /* PROFILE */
+        this.profileService = new ProfileService(this.bookmarks, this.users);
+        this.profileController = new ProfileController(this.profileService);
     }
 
     Database() {

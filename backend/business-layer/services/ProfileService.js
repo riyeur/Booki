@@ -66,4 +66,4 @@ class ProfileService {
     }
 }
 
-export default new ProfileService(Bookmarks, Users);
+export default ProfileService;
