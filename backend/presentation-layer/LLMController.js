@@ -8,7 +8,7 @@ class LLMController {
 
     }
 
-    async generateBooks(request,response){
+    async generateBooks(request, response) {
         try {
             const formData = request.body;
 

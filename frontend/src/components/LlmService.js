@@ -13,7 +13,7 @@ export async function getBookRecs(formData){
         });
 
         if (!response.ok) {
-            console.error(`HTTP Error! Status: ${response.status}`);
+            console.error(`Error: ${response.status}`);
         };
 
         return await response.json();
