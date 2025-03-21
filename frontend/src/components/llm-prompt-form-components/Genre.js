@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/LLMPromptPageStyles.css'
 
-const Genre = () => {
+const Genre = ({name, value, onChange}) => {
     
     const genres = [
         "Action", "Biographical", "Chick Lit", "Classics",
@@ -14,7 +14,7 @@ const Genre = () => {
     return (
         <div className='genres'>
             <label className='genre-label'>Genre</label>
-            <select className='genre' name='options'>
+            <select className='genre' name={name} value={value} onChange={onChange}>
                 <option value='' disabled selected></option>
                 {genres.map((genre, index) => (
                     <option key={index} value={genre.toLowerCase().replace(/\s+/g, '-')}>
