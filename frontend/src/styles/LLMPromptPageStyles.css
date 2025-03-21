@@ -182,6 +182,16 @@ label {
     
 }
 
+.loading {
+    color: #bf1b44;
+    text-align: center;
+    margin-top: -1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Karla';
+    font-weight: 700;
+}
+
 /* The problem is caused by too many columns in description and similar books and padding in author */
 
 @media (max-width: 768px) {

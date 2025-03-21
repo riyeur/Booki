@@ -121,7 +121,7 @@ body {
     margin-bottom: 0.2rem;
 }
 
-.dark-text{
+.dark-text {
     font-family: 'Karla';
     font-size: 1rem;
     font-weight: 600;
@@ -139,6 +139,18 @@ body {
 .button-for-saving-and-deleting:active,
 .button-for-saving-and-deleting:focus {
     background-color: #F2A2B5;
+}
+
+.button-for-saving-and-deleting-disabled-button {
+    background-color: #d6d0d0 !important;
+    cursor: not-allowed;
+}
+
+.button-for-saving-and-deleting-disabled-button:hover,
+.button-for-saving-and-deleting-disabled-button:focus,
+.button-for-saving-and-deleting-disabled-button:active {
+    background-color: #a29b9b;
+    cursor: not-allowed;
 }
 
 .delete-button-container {

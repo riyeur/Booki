@@ -11,11 +11,12 @@ class Results {
         try {
             const individualIDs = bookIDs.map(() => '?').join(',');
             
-            const query = `SELECT Book_Name, Author, Accessibility, Description FROM BOOK WHERE Book_ID IN (${individualIDs})`;
+            const query = `SELECT Book_ID, Book_Name, Author, Accessibility, Description FROM BOOK WHERE Book_ID IN (${individualIDs})`;
 
             const [books] = await this.connection.execute(query, [...bookIDs]);
 
             const formattedResultsForResults = books.map(book => ({
+                bookId: book.Book_ID,
                 bookName: book.Book_Name,
                 authorName: book.Author,
                 accessibilityInfo: book.Accessibility,
@@ -27,6 +28,21 @@ class Results {
         } catch (error) {
             console.log(`Unable to get the books`);
             return [];
+        }
+    }
+
+    async createBookmarkForUser(bookID, userID) {
+        try {
+            const query = 'UPDATE BOOK SET User_ID = ? WHERE Book_ID = ?';
+
+            const [bookmark] = await this.connection.execute(query, [userID, bookID]);
+
+            console.log(`Book with ID ${bookID} updated with User_ID ${userID}`);
+    
+            return true;
+        } catch (error) {
+            console.log("Error saving bookmark:", error);
+            return null;
         }
     }
 }
