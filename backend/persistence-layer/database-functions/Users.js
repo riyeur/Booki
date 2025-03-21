@@ -6,18 +6,14 @@ class Users {
     }
     
     async getUserByUsername(username) {
-        let connect;
         try {
-
-            connect = await this.connection.getConnection();
-
             const query = 'SELECT User_ID, Username, User_Password FROM BOOKI_USER WHERE Username = ?';
     
-            const [users] = await connect.execute(query, [username]);
+            const [users] = await this.connection.execute(query, [username]);
 
             console.log(`User:`, users);
     
-            if (!users || users.length === 0) {
+            if (!users) {
                 return null;
             }
 
@@ -25,23 +21,15 @@ class Users {
         } catch (error) {
             console.log(`Error: Could not retrieve user.`)
             return null;
-        } finally {
-            if (connect) {
-                connect.release();
-            }
         }
     }
     
     
     async createUser(email, username, password) {
-        let connect;
         try {
-
-            connect = await this.connection.getConnection();
-
             const query = 'INSERT INTO BOOKI_USER (Username, User_Email, User_Password) VALUES (?, ?, ?)';
 
-            const [result] = await connect.execute(query, [username, email, password]);
+            const [result] = await this.connection.execute(query, [username, email, password]);
 
             console.log(`User created with the ID:`, result.insertId);
     
@@ -49,10 +37,6 @@ class Users {
         } catch (error) {
             console.log("Error creating user:", error);
             return null;
-        } finally {
-            if (connect) {
-                connect.release();
-            }
         }
     }
 

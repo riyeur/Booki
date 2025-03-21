@@ -49,7 +49,7 @@ const LLMPromptForm = () => {
 
             if (results.length > 0) {
                 const bookIDsURL = results.join(',');
-                navigate(`/llm-results?books=${bookIDsURL}`);
+                navigate(`/llm-results?books=${bookIDsURL}`, { state: { fromPrompt: true } });
             } else {
                 setError("An error occurred while generating recommendations. Please try again.");
             }
