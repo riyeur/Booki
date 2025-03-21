@@ -5,7 +5,6 @@ import cors from 'cors';
 
 /* CHANGE THIS */
 import profileRoute from './routes/ProfileRoute.js';
-import llmRoute from './routes/LLMRoutes.js';
 import resultRoute from './routes/ResultRoute.js';
 
 /* LOGIN */
@@ -19,6 +18,12 @@ import Users from './persistence-layer/database-functions/Users.js';
 import createSignupRoute from './routes/signupRoute.js';
 import SignupController from './presentation-layer/SignupController.js';
 import SignupService from './business-layer/services/SignupService.js';
+
+/* LLM */
+import createLLMRoute from './routes/LLMRoutes.js';
+import LLMController from './presentation-layer/LLMController.js';
+import LlmPromptService from './business-layer/services/LlmPromptService.js';
+import StoreLLMResponse from './persistence-layer/database-functions/storeLLMResponse.js';
 
 class Main {
     constructor() {
@@ -40,13 +45,15 @@ class Main {
         this.app.use('/api/user', createLoginRoute(this.loginController));
         this.app.use('/api/user', createSignupRoute(this.signupController));
         this.app.use('/api/user', profileRoute);
-        this.app.use('/api/llm', llmRoute);
+        this.app.use('/api/llm', createLLMRoute(this.llmController));
         this.app.use('/api/book', resultRoute);
     }
 
     Instantiate() {
-        /* LOGIN */
         this.users = Users;
+        this.llm = StoreLLMResponse;
+
+        /* LOGIN */
         this.tokenService = new TokenService(process.env.JWT_SECRET);
         this.loginService = new LoginService(this.users, this.tokenService);
         this.loginController = new LoginController(this.loginService);
@@ -54,6 +61,10 @@ class Main {
         /* SIGN UP */
         this.signupService = new SignupService(this.users);
         this.signupController = new SignupController(this.signupService);
+
+        /* LLM */
+        this.llmService = new LlmPromptService(process.env.apiKey, this.llm);
+        this.llmController = new LLMController(this.llmService);
     }
 
     Database() {

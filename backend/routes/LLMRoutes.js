@@ -1,12 +1,9 @@
-//express route to handle requests
+import { Router } from 'express';
 
-import express from "express";
-import LLMController from "../presentation-layer/LLMController.js";
+export default function createLLMRoute(llmController) {
+    const router = Router();
 
-const router = express.Router();
+    router.post('/generate-books', llmController.generateBooks);
 
-//define post route for generating book recs
-router.post("/generate-books", LLMController.generateBooks);
-
-
-export default router;
+    return router;
+}
