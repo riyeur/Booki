@@ -59,3 +59,32 @@ body {
     justify-content: right;
     align-items: right;
 }
+
+@media (max-width: 768px) {
+    body {
+        padding: 0vw;
+    }
+
+    .profile-logo {
+        height: auto;
+        padding-top: 2vh;
+        margin: 4vw;
+    }
+
+    .bookmarks-title {
+        text-align: center;
+    }
+
+    .bookmark-list {
+        padding-left: 3vw;
+        padding-right: 3vw;
+        padding-top: 1.5vh;
+        padding-bottom: 2.3vh;
+        margin-bottom: 2.5vh;
+        margin-top: 2vh;
+        width: 90vw;
+        box-sizing: border-box;
+    }
+
+    
+}
