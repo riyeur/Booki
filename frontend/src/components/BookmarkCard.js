@@ -2,7 +2,11 @@
 import React from 'react';
 import '../styles/ProfilePageStyles.css'
 
-const BookmarkCard = ({bookName, authorName, accessibilityInfo, bookDescription, buttonText, onButtonClick}) => {
+const BookmarkCard = ({bookId, bookName, authorName, accessibilityInfo, bookDescription, buttonText, onButtonClick}) => {
+    const handleButtonClick = () => {
+        onButtonClick(bookId);
+    };
+
     return (
         <div className='bookmark-card'>
             <h2 className='book-name-text'>{bookName}</h2>
@@ -10,8 +14,8 @@ const BookmarkCard = ({bookName, authorName, accessibilityInfo, bookDescription,
             <p><span className='dark-text'>Accessibility: </span>{accessibilityInfo}</p>
             <p><span className='dark-text'>Description: </span>{bookDescription}</p>
             <div className='delete-button-container'> 
-                <button className='button-for-saving-and-deleting' onClick={onButtonClick}>{buttonText}</button> 
-                </div>
+                <button className='button-for-saving-and-deleting' onClick={handleButtonClick}>{buttonText}</button> 
+            </div>
             <hr/>
         </div>
     );

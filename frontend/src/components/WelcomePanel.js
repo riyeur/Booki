@@ -1,19 +1,11 @@
 // This component represents the welcome panel the user will see on their profile page with their name
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/ProfilePageStyles.css'
-import { getUsername } from '../services/getUsername';
 
-const WelcomePanel = () => {
-    const [username, setUsername] = useState("");
+const WelcomePanel = ({username}) => {
     const token = sessionStorage.getItem('token');
     const navigate = useNavigate();
-
-    useEffect(() => {
-        getUsername().then((name) => {
-            setUsername(name[0].username);
-        });
-    }, []);
 
     const signOutButton = () => {
         if (token) {
