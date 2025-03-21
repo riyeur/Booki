@@ -86,6 +86,7 @@ body {
     font-family: 'Karla';
     font-weight: 600;
     font-size: medium;
+    color: #000000;
 }
 
 .sign-in-button:hover {
@@ -154,6 +155,7 @@ hr {
     font-family: 'Karla';
     font-weight: 600;
     font-size: medium;
+    color: #000000;
 }
 
 .register:hover {
