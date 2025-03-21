@@ -76,14 +76,14 @@ const LLMPromptForm = () => {
                     </div>
                     <div className='second-row'>
                         <AgeGroup name="ageGroup" value ={formData.ageGroup} onChange={handleChange}></AgeGroup>
-                        <Length name="length" onChange={handleChange}></Length>
+                        <Length name="length" value = {formData.length} onChange={handleChange}></Length>
                     </div>
                     <div className='third-row'>
                         <Author name="author" value = {formData.author} onChange={handleChange}></Author>
                     </div>
                     <div className='fourth-row'>
                         <Language name="language" value = {formData.language} onChange={handleChange}></Language>
-                        <Accessibility name="accessibility" onChange={handleChange}></Accessibility>
+                        <Accessibility name="accessibility" value = {formData.accessibility} onChange={handleChange}></Accessibility>
                     </div>
                     <div className='fifth-row'>
                         <Description name="description" value = {formData.description} onChange={handleChange}></Description>

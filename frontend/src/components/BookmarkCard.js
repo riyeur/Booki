@@ -2,9 +2,14 @@
 import React from 'react';
 import '../styles/ProfilePageStyles.css'
 
-const BookmarkCard = ({bookId, bookName, authorName, accessibilityInfo, bookDescription, buttonText, onButtonClick}) => {
+const BookmarkCard = ({bookId, bookName, authorName, accessibilityInfo, bookDescription, buttonText, onButtonClick, isLoggedIn = true, savedBookIds = []}) => {
+    const isSaved = savedBookIds.includes(bookId);
+    const isDisabled = !isLoggedIn || isSaved;
+
     const handleButtonClick = () => {
-        onButtonClick(bookId);
+        if (!isDisabled) {
+            onButtonClick(bookId);
+        }
     };
 
     return (
@@ -14,7 +19,7 @@ const BookmarkCard = ({bookId, bookName, authorName, accessibilityInfo, bookDesc
             <p><span className='dark-text'>Accessibility: </span>{accessibilityInfo}</p>
             <p><span className='dark-text'>Description: </span>{bookDescription}</p>
             <div className='delete-button-container'> 
-                <button className='button-for-saving-and-deleting' onClick={handleButtonClick}>{buttonText}</button> 
+                <button className={isDisabled ? 'button-for-saving-and-deleting-disabled-button' : 'button-for-saving-and-deleting'} disabled={isDisabled} onClick={handleButtonClick}> {isSaved ? 'Saved' : buttonText}</button> 
             </div>
             <hr/>
         </div>

@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/ProfilePageStyles.css';
 import BookmarkCard from './BookmarkCard';
 
-const BookmarkList = ({title, bookmarks, buttonText, handleClick}) => {
+const BookmarkList = ({title, bookmarks, buttonText, handleClick, isLoggedIn, savedBookIds = []}) => {
 
     return (
         <div className='bookmark-list'>
@@ -23,6 +23,8 @@ const BookmarkList = ({title, bookmarks, buttonText, handleClick}) => {
                     bookDescription = {bookmark.bookDescription}
                     buttonText = {buttonText}
                     onButtonClick = {handleClick}
+                    isLoggedIn={isLoggedIn}
+                    savedBookIds={savedBookIds}
                     />
                 ))
             }

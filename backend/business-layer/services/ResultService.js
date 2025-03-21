@@ -1,4 +1,5 @@
 import Results from '../../persistence-layer/database-functions/Results.js';
+import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -23,6 +24,21 @@ class ResultService {
         console.log(`(ResultService) Recieved the books: `, books);
 
         return books;
+    }
+
+    async saveBookForUser(token, bookID) {
+        try {
+            const decoded_token = jwt.verify(token, process.env.JWT_SECRET);
+            const userID = decoded_token.userID;
+            // save the requested bookmark using the sql querry in the persistence layer
+            console.log(`Sending book to database function with boodID ${bookID}.`);
+            const response = await this.results.createBookmarkForUser(bookID, userID);
+
+            return response;
+        }
+        catch (error){
+            return false;
+        }
     }
 }
 
