@@ -97,6 +97,7 @@ body {
     font-family: 'Karla';
     font-weight: 600;
     font-size: medium;
+    color: #000000;
 }
 
 .register-button:hover {
