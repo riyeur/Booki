@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import SignupController from '../presentation-layer/SignupController.js';
 
-const router = Router();
+export default function createSignupRoute(signupController) {
+    const router = Router();
 
-router.post('/signup', SignupController.registerUser);
+    router.post('/signup', signupController.registerUser);
 
-export default router;
+    return router;
+}

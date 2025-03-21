@@ -1,6 +1,3 @@
-import ProfileService from '../business-layer/services/ProfileService.js';
-
-// This class handles HTTP requests and responses
 class ProfileController {
 
     constructor(profileService) {
@@ -11,7 +8,7 @@ class ProfileController {
         this.deleteBookmark = this.deleteBookmark.bind(this);
     }
 
-    extractToken(request){
+    extractToken(request) {
         // Extracting the token from the request
         const authorization_header = request.headers.authorization;
         const token = authorization_header && authorization_header.split(' ')[1]; // expecting to receive "Bearer <token>"
@@ -82,4 +79,4 @@ class ProfileController {
         
 }
 
-export default new ProfileController(ProfileService);
+export default ProfileController;

@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import ResultController from '../presentation-layer/ResultController.js';
 
-const router = Router();
+export default function createResultRoute(resultController) {
+    const router = Router();
 
-router.post('/result', ResultController.getGeneratedBooks);
-router.post('/result/:bookId', ResultController.createBookmark);
+    router.post('/result', resultController.getGeneratedBooks);
+    router.post('/result/:bookId', resultController.createBookmark);
 
-export default router;
+    return router;
+}

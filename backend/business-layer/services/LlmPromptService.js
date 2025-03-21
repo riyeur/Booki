@@ -1,12 +1,12 @@
-
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import StoreLLMResponse from "../../persistence-layer/database-functions/storeLLMResponse.js";
 
-class LlmPromptService{
+class LlmPromptService {
 
-    constructor(apiKey){
+    constructor(apiKey, storeResponse) {
         this.genAI = new GoogleGenerativeAI(apiKey);
         this.model = this.genAI.getGenerativeModel({model: "gemini-2.0-flash"})
+        this.storeResponse = storeResponse;
+        this.run = this.run.bind(this);
     }
     
     async run(formData) {
@@ -44,7 +44,7 @@ class LlmPromptService{
 
             const parsedBooks = this.parseLLMResponse(textResult);
             
-            const bookIDs = await StoreLLMResponse.storeBooksInDatabase(parsedBooks);
+            const bookIDs = await this.storeResponse.storeBooksInDatabase(parsedBooks);
             console.log("Inserted Book IDs:", bookIDs);
             
             return bookIDs;

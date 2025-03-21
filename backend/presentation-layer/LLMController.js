@@ -1,11 +1,8 @@
-import LlmPromptService from '../business-layer/services/LlmPromptService.js'
-
 class LLMController {
 
-    constructor(LlmPromptService){
+    constructor(LlmPromptService) {
         this.llmPromptService = LlmPromptService;
         this.generateBooks = this.generateBooks.bind(this);
-
     }
 
     async generateBooks(request, response) {
@@ -22,4 +19,4 @@ class LLMController {
     }
 }
 
-export default new LLMController(new LlmPromptService(process.env.apiKey));
+export default LLMController;

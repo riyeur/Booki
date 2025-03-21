@@ -1,6 +1,3 @@
-// controllers/SignupController.js
-import SignupService from '../business-layer/services/SignupService.js';
-
 class SignupController {
 
     constructor(signupService) {
@@ -36,4 +33,4 @@ class SignupController {
     }
 }
 
-export default new SignupController(SignupService);
+export default SignupController;

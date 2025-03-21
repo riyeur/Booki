@@ -1,5 +1,3 @@
-import ResultService from '../business-layer/services/ResultService.js';
-
 class ResultController {
 
     constructor(resultService) {
@@ -49,4 +47,4 @@ class ResultController {
     }
 }
 
-export default new ResultController(ResultService);
+export default ResultController;

@@ -1,5 +1,3 @@
-import LoginService from '../business-layer/services/LoginService.js';
-
 // This class handles HTTP requests and responses
 class LoginController {
 
@@ -31,4 +29,4 @@ class LoginController {
     }
 }
 
-export default new LoginController(LoginService);
+export default LoginController;
