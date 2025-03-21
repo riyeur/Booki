@@ -13,6 +13,7 @@ class Main {
         this.app = express();
         this.connection = connection;
         this.ExpressCors();
+        this.makeBackendNotSleep();
         this.Routes();
         this.Database();
     }
@@ -41,6 +42,13 @@ class Main {
         })
         .catch(error => {
             console.log('Database connection failed:', error);
+        });
+    }
+
+    // Backend was failing after inactivity => send ping so that it does not stop
+    makeBackendNotSleep() {
+        this.app.get('/ping', (request, response) => {
+            response.send('Backend is active');
         });
     }
 
