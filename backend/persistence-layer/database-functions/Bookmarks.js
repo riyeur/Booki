@@ -6,11 +6,7 @@ class Bookmarks {
         this.connection = dbConnection;
     }
 
-    /**
-     * Retrieves bookmarked books for a specific user.
-     * @param {number} userId - The ID of the user.
-     * @returns {Promise<Array<{bookId: number, bookName: string, authorName: string, accessibilityInfo: string, bookDescription: string}> | null>} - An array of bookmarked books or null if none found.
-     */
+    //Retrieves bookmarked books for a specific user.
     async getBooksByUserId(userId) {
         try {
             // get bookmarks from the database based on current user id
@@ -37,11 +33,8 @@ class Bookmarks {
         } 
     }
 
-    /**
-     * Deletes a bookmarked book based on its book ID.
-     * @param {number} bookId - The ID of the book to be deleted.
-     * @returns {Promise<boolean>} - True if deletion was successful, false otherwise.
-     */
+
+    // Deletes a bookmarked book based on its book ID.
     async deleteBookmarkByBookId(bookId) {
         try {
             // delete bookmark from database based on book id
