@@ -1,3 +1,12 @@
+/**
+ * This file defines the ProfileService class, which handles user profile operations, specifically bookmarks and user details.
+ * The 'extractUserId' method decodes a JWT token and extracts the user ID from it.
+ * The 'getUserBookmarksById' method retrieves a user's bookmarks by their user ID. It checks the validity of the user ID and returns the bookmarks from the database.
+ * The 'getUsernameById' method retrieves a user's username by their user ID, ensuring the user is authorized before querying the database.
+ * The 'deleteBookmarkById' method deletes a specific bookmark from the database using its bookmark ID.
+ * The class interacts with the persistence layer to perform these operations, ensuring user data and bookmarks are handled correctly.
+ */
+
 import Bookmarks from '../../persistence-layer/database-functions/Bookmarks.js';
 import Users from '../../persistence-layer/database-functions/Users.js';
 import jwt from 'jsonwebtoken';

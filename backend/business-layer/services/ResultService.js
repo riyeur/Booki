@@ -1,3 +1,13 @@
+/**
+ * This file defines the ResultService class, which is responsible for handling book-related operations for users.
+ * The 'getBooks' method fetches books from the database by their IDs and returns the book data.
+ * If no books are found, it returns false.
+ * The 'saveBookForUser' method verifies the user's JWT token, decodes it to get the user ID, 
+ * and then saves the requested book as a bookmark for that user in the database.
+ * It uses the persistence layer's functions to handle database interactions.
+ * If the token is invalid or there is an error, it returns false.
+ */
+
 import Results from '../../persistence-layer/database-functions/Results.js';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
