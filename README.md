@@ -50,3 +50,4 @@ To run Booki locally, follow these steps for both the frontend and backend:
 
 Your app should now be running locally on your machine!
 
+
