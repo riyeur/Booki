@@ -1,3 +1,7 @@
+/**
+ * Controller class responsible for handling user registration requests.
+ */
+
 class SignupController {
 
     constructor(signupService) {

@@ -1,3 +1,8 @@
+/**
+ * Controller class responsible for handling profile-related operations,
+ * including fetching bookmarks, retrieving usernames, and deleting bookmarks.
+ */
+
 class ProfileController {
 
     constructor(profileService) {
