@@ -6,11 +6,7 @@ class Results {
         this.connection = dbConnection;
     }
 
-    /**
-     * Retrieves books based on a list of book IDs.
-     * @param {Array<number>} bookIDs - An array of book IDs to fetch details for.
-     * @returns {Promise<Array<{bookId: number, bookName: string, authorName: string, accessibilityInfo: string, bookDescription: string}>>} - An array of book details.
-     */
+    //Retrieves books based on a list of book IDs.
     async getBooksByBookId(bookIDs) {
         // get all bookmarks from the database based on current book ID
         try {
@@ -36,12 +32,7 @@ class Results {
         }
     }
 
-    /**
-     * Assigns a book to a specific user by updating the User_ID field.
-     * @param {number} bookID - The ID of the book to be assigned.
-     * @param {number} userID - The ID of the user who will own the bookmark.
-     * @returns {Promise<boolean | null>} - Returns true if the update was successful, null if an error occurred.
-     */
+    //Assigns a book to a specific user by updating the User_ID field.
     async createBookmarkForUser(bookID, userID) {
         try {
             const query = 'UPDATE BOOK SET User_ID = ? WHERE Book_ID = ?';
