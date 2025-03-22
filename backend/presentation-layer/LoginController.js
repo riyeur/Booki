@@ -1,4 +1,8 @@
-// This class handles HTTP requests and responses
+/**
+ * Controller class responsible for handling user login requests.
+ * Delegates authentication logic to the LoginService and manages HTTP responses.
+ */
+
 class LoginController {
 
     constructor(loginService) {

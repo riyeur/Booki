@@ -1,3 +1,12 @@
+/**
+ * This file defines the LlmPromptService class, which interacts with the Google Generative AI API to generate book recommendations.
+ * The 'run' method constructs a prompt based on the user's form data and sends it to the AI model for content generation. It processes the response to parse book recommendations into JSON-like strings.
+ * These parsed recommendations are then stored in the database using the storeResponse service.
+ * The 'parseLLMResponse' method parses the raw response from the AI model, converting it into an array of JSON objects for further processing.
+ * The class handles the communication with the generative AI model and database storage, ensuring the response is correctly formatted and stored.
+ */
+
+
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 class LlmPromptService {

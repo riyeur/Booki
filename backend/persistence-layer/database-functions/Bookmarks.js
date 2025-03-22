@@ -6,6 +6,7 @@ class Bookmarks {
         this.connection = dbConnection;
     }
 
+    //Retrieves bookmarked books for a specific user.
     async getBooksByUserId(userId) {
         try {
             // get bookmarks from the database based on current user id
@@ -32,6 +33,8 @@ class Bookmarks {
         } 
     }
 
+
+    // Deletes a bookmarked book based on its book ID.
     async deleteBookmarkByBookId(bookId) {
         try {
             // delete bookmark from database based on book id

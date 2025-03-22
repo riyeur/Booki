@@ -5,6 +5,7 @@ class Users {
         this.connection = dbConnection;
     }
     
+    //Retrieves a user by their username.
     async getUserByUsername(username) {
         try {
             const query = 'SELECT User_ID, Username, User_Password FROM BOOKI_USER WHERE Username = ?';
@@ -19,12 +20,12 @@ class Users {
 
             return users[0];
         } catch (error) {
-            console.log(`Error: Could not retrieve user.`)
+            console.log(`Error: Could not retrieve user.`);
             return null;
         }
     }
     
-    
+    //Creates a new user in the database.
     async createUser(email, username, password) {
         try {
             const query = 'INSERT INTO BOOKI_USER (Username, User_Email, User_Password) VALUES (?, ?, ?)';
@@ -40,6 +41,7 @@ class Users {
         }
     }
 
+    //Retrieves the username based on the user ID.
     async getUsernameByUserId(userId) {
         try {
             const query = 'SELECT Username FROM BOOKI_USER WHERE User_ID = ?';
@@ -54,7 +56,6 @@ class Users {
             return null;
         }
     }
-
 }
 
 // Export an instance of Users with the database connection

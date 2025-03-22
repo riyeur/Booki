@@ -6,6 +6,7 @@ class Results {
         this.connection = dbConnection;
     }
 
+    //Retrieves books based on a list of book IDs.
     async getBooksByBookId(bookIDs) {
         // get all bookmarks from the database based on current book ID
         try {
@@ -31,6 +32,7 @@ class Results {
         }
     }
 
+    //Assigns a book to a specific user by updating the User_ID field.
     async createBookmarkForUser(bookID, userID) {
         try {
             const query = 'UPDATE BOOK SET User_ID = ? WHERE Book_ID = ?';
