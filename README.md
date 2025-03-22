@@ -4,7 +4,7 @@ Booki is an app designed to provide personalized book recommendations based on u
 
 ### **Running the App on Railway**
 
-To deploy the Booki app on Railway, click the following link to access the deployment: 
+To run the Booki app on Railway, click the following link to access the deployment: 
 https://booki-production.up.railway.app/
 
 ### **Running the App Locally**
@@ -13,8 +13,8 @@ To run Booki locally, follow these steps for both the frontend and backend:
 
 1. Clone the main repository and navigate into the Booki directory:
 
-2. 
-You will need to set up an SQL database. The necessary SQL scripts for setting up the database are provided in the `BookiDatabase.sql` in the GitHub repository. 
+2. You will need to set up an SQL database. The necessary SQL scripts for setting up the database are provided in the `BookiDatabase.sql` in the GitHub repository. 
+
 You will also need to:
 - Create a `.env` file for the frontend and update it with the necessary variables.
 - Update the `.env` file for the backend 
