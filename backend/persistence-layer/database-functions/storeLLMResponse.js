@@ -8,11 +8,7 @@ class StoreLLMResponse {
         this.connection = dbConnection;
     }
     
-    /**
-     * Stores an array of book recommendations in the database.
-     * @param {Array<{Book: string, Author: string, Accessibility: string, Description: string}>} parsedBooks - The books to be inserted.
-     * @returns {Promise<Array<number>>} - An array of inserted book IDs.
-     */
+    //Stores an array of book recommendations in the database.
     async storeBooksInDatabase(parsedBooks) {
         try {
             let insertedBookIds = [];
@@ -30,11 +26,7 @@ class StoreLLMResponse {
         }
     }
     
-    /**
-     * Inserts a single book recommendation into the database.
-     * @param {{Book: string, Author: string, Accessibility: string, Description: string}} data - The book data to insert.
-     * @returns {Promise<number | undefined>} - The ID of the inserted book or undefined if insertion fails.
-     */
+    // Inserts a single book recommendation into the database.
     async storeResponse(data) {
         const query = 'INSERT INTO BOOK (Book_Name, Author, Accessibility, Description) VALUES (?, ?, ?, ?)';
 
